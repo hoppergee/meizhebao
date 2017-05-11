@@ -1,5 +1,7 @@
 class Admin::ProductsController < ApplicationController
 
+	layout "admin"
+
 	before_action :authenticate_user!
 	before_action :admin_require
 
@@ -55,7 +57,7 @@ class Admin::ProductsController < ApplicationController
 
 	def admin_require
 		if !current_user.admin?
-			redirect_to root_path
+			redirect_to "/", alert: "You are not admin."
 		end
 	end
 
