@@ -17,3 +17,25 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+
+
+.navbar-default {
+	background-color: transparent;
+	border: none;
+	margin-top: 60px;
+}
+
+// 让所有navbar块居中对齐
+.navbar>.container-fluid>div {
+	text-align: center;
+}
+
+// navbar左右两边6个div中的文字都向下移动15px,且文字黑色
+.navbar>.container-fluid>div>div {
+	padding-top: 15px;
+
+	a {
+		color: black;
+	}
+}
+
