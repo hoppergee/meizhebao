@@ -1,3 +1,180 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#head-section, #content-section-1, #content-section-2, #content-section-3 {
+	position: relative;
+	width: auto;
+	margin: 30px 0 0 0;
+	padding: 0;
+	display: block;
+}
+
+#video-title {
+	position: absolute;
+	bottom: 20%;
+	text-align: center;
+	width: 100%;
+
+	z-index: 2000;
+
+	h1 {
+		color: white;
+		letter-spacing: 0.4em;
+		font-size: 6em;
+	}
+
+	a {
+		margin-top: 4em;
+		padding: 0.8em 2.5em;
+	}
+}
+
+#content-section-1>.content-1 {
+	margin: 0 auto;
+	width: 690px;
+	text-align: center;
+	.group {
+		text-align: center;
+	}
+
+	p {
+		color: #666;
+	}
+
+	img {
+		width: 100%;
+	}
+
+}
+
+.short-line {
+    display: block;
+    background: #f96146;
+    border-style: none;
+    border-radius: 0;
+    margin: 20px auto 20px auto;
+    z-index: 53;
+    width: 200px;
+    height: 2px;
+    position: relative;
+}
+
+#content-section-2 {
+	background-color: #f2f2f2;
+}
+
+#content-section-2>.content-2, #content-section-3>.content-3 {
+	text-align: center;
+	position: relative;
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 50px;
+}
+
+.feature-title {
+	margin-bottom: 50px;
+}
+
+.feature-block {
+    display: block;
+    width: 290px;
+    position: relative;
+    margin: 20px 15px 0;
+    float: left;
+}
+
+.customer-block-left, .customer-block-right {
+	float:left;
+	width: 500px;
+	padding-left: 30px;
+}
+
+.customer-block-right {
+	width: 380px;
+	padding-left: 30px;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+#content-section-3 .group {
+	padding-bottom: 60px;
+}
+
+
+.customer-block-left .img, .customer-block-right .img {
+	float: left;
+	width: 90px;
+
+	img {
+		width: 80px;
+		height: 80px;
+		border: 1px solid #eee;
+		box-shadow: 2px 3px 4px gray;
+		border-radius: 50%;
+	}
+}
+
+.customer-block-left .name, .customer-block-right .name {
+	float: left;
+	width: auto;
+	padding: 0 30px;
+
+	span {
+		font-size: 1.15em;
+		line-height: 22px;
+		font-weight: bold;
+	}
+
+	p {
+		padding-top: 13px;
+		line-height: 25px;
+		font-size: 1em;
+		color: #666;
+	}
+}
+
+.customer-block-left .talk, .customer-block-right .talk {
+	padding-top: 30px;
+	clear: both;
+	width: 350px;
+}
+
+
+#content-section-bottom {
+    display: block;
+    background: linear-gradient(rgba(12,12,9,0.55), rgba(12,12,9,0.25)),url(http://7xss15.com1.z0.glb.clouddn.com/2017-05-12-baby_foot.png);
+    background-position: center 80%;
+    background-size: cover;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    width: 100%;
+    min-width: 960px;
+    height: 300px;
+    position: relative;
+}
+
+#content-section-bottom .bottom-content {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+    height: 200px;
+    position: relative;
+    text-align: center;
+    padding-top: 100px;
+
+    p {
+	   	color: white;
+	    font-size: 1.4em;
+	    margin-bottom: 60px;
+	    letter-spacing: 3px;
+    }
+}
+
+
