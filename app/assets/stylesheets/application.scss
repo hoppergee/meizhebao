@@ -85,4 +85,315 @@ a {
 }
 
 
+//=========== bootstrap tab custom ========
+
+
+// 修改背景色。chrome自动填充的表单，改background-color无效
+input:-webkit-autofill{
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+// 修改文字颜色。chrome自动填充的表单，改color无效
+input:-webkit-autofill{
+    -webkit-text-fill-color: #999999;
+}
+
+
+.sign-container .nav-tabs {
+    border-bottom: 1px solid #d9d9d9;
+    margin-bottom: 32px;
+}
+
+.sign-container .nav-tabs li a{
+    border: none;
+    font-size: 15px;
+    text-decoration: none;
+    color: #d9d9d9;
+    font-weight: 600;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 10px 13px 5px 22px;
+    letter-spacing: 0.6em;
+}
+
+.sign-container .nav-tabs li a:hover {
+    background-color: transparent;
+    color: #1E282C;
+}
+
+.sign-container .nav-tabs li.active {
+    border-bottom: 1px solid #1E282C;
+}
+
+.sign-container .nav-tabs li.active a {
+    border: none;
+    color: #1E282C;
+}
+
+//===== tab form custom ======
+
+.sign-container .tab-content input {
+  font-size: 1em;
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 14px;
+  padding: 15px 12px;
+  color: #999999;
+  border: none;
+  border-bottom: 1px solid #d9d9d9;
+  background: transparent;
+/*   -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px; */
+}
+
+
+.sign-container .tab-content input.submit{
+    font-size: 1.3em;
+    display: block;
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    // cursor: pointer;
+    // vertical-align: middle;
+    // vertical-align: baseline;
+    // padding: 15px 12px;
+    letter-spacing: 1em;
+    border: 1px solid #1E282C;
+    color: #1E282C;
+    padding: 5px 0;
+}
+
+
+
+//============== 登录／注册 =================
+
+.sign-container {
+  position: relative;
+  overflow: hidden;
+  width: 850px;
+  height: 600px;
+  margin: 80px auto 0;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 15px 20px;
+}
+.box {
+  float: left;
+  width: 50%;
+  height: 100%;
+  padding: 3.5em 2em 0;
+}
+.box.left{
+  background-color: #ffffff;
+}
+.box.right {
+  background: linear-gradient(310deg, rgba(0,0,0,0.5), rgba(0,0,0,0.28));
+}
+
+.sign-container h1 {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-bottom: 1.5em;
+  text-align: center;
+  text-indent: 6px;
+  letter-spacing: 6px;
+  line-height: 1.4em;
+  text-transform: uppercase;
+}
+
+.sign-tabs {
+  font-weight: 600;
+  margin-bottom: 2em;
+  border-bottom: 1px solid #d9d9d9;
+}
+.sign-tabs .tab {
+  display: inline-block;
+  margin-bottom: -1px;
+  padding: 20px 15px 10px;
+  letter-spacing: 1.5px;
+  border-bottom: 1px solid #d9d9d9;
+  transition: all 0.1s ease-in-out;
+}
+.sign-tabs .tab a {
+  font-size: 11px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #d9d9d9;
+  transition: all 0.1s ease-in-out;
+}
+.sign-tabs .tab.active a, body .sign-container .sign-tabs .tab:hover a {
+  color: #1E282C;
+}
+.sign-tabs .tab.active {
+  border-bottom: 1px solid #1E282C;
+}
+
+.tab-content form {
+  position: relative;
+  height: 287px;
+}
+.tab-content label, .sign-container .tab-content input, .sign-container .tab-content .extra-link {
+  -moz-animation: slideIn 0.4s ease-in-out;
+  -webkit-animation: slideIn 0.4s ease-in-out;
+  animation: slideIn 0.4s ease-in-out;
+}
+.tab-content label {
+  font-size: 12px;
+  color: #1E282C;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.tab-content label:not([for='remember']) {
+  display: none;
+}
+.tab-content input.inpt {
+  font-size: 1em;
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 14px;
+  padding: 15px 12px;
+  color: #999999;
+  border: none;
+  border-bottom: 1px solid #d9d9d9;
+  background: transparent;
+/*   -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px; */
+}
+.tab-content input.inpt::-webkit-input-placeholder {
+  font-size: 14px;
+  color: #999999;
+}
+.tab-content input.inpt:-ms-input-placeholder {
+  font-size: 14px;
+  color: #999999;
+}
+.tab-content input.inpt:focus {
+  border-color: #999999;
+}
+.tab-content input.submit {
+  font-size: 0.8em;
+  display: block;
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  cursor: pointer;
+  vertical-align: middle;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 1px solid #1E282C;
+}
+.tab-content input.submit:hover {
+  background-color: #1E282C;
+  color: #ffffff;
+  transition: 0.2s ease;
+}
+.tab-content input:focus {
+  outline: none;
+}
+
+.tab-content .form-actions {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.tab-content .form-actions a {
+  font-size: 12px;
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: #999999;
+}
+.tab-content .form-actions a:hover {
+  text-decoration: underline;
+}
+.signup-info {
+  display: none;
+}
+
+// @keyframes slideIn {
+//   0% {
+//     opacity: 0;
+//     margin-left: -320px;
+//   }
+//   100% {
+//     opacity: 1;
+//     margin-left: 0px;
+//   }
+// }
+// @-webkit-keyframes slideIn {
+//   0% {
+//     opacity: 0;
+//     margin-left: -320px;
+//   }
+//   100% {
+//     opacity: 1;
+//     margin-left: 0px;
+//   }
+// }
+
+/* Social Networks Sign In */
+.right .sign-via {
+  display: block;
+  text-align: left;
+  margin-top: 50px;
+  margin-bottom: 60px;
+  font-size: 20px;
+  color: #FFF;
+  text-align: center;
+  animation: reveal 0.9s ease;
+}
+
+button.social-network {
+  font-size: 1em;
+  letter-spacing: 2px;
+  text-align: left;
+  color: #efefef;
+  width: 100%;
+  height: 45px;
+  padding-left: 35%;
+  margin: 15px 0px;
+  border: 2px solid #efefef;
+  background: transparent;
+  transition: 0.2s ease;
+  cursor: pointer;
+  animation: reveal 0.9s ease;
+
+}
+
+button i{
+  float: left;
+  margin: 1px 20px 0px 0px;
+}
+
+button.social-network:hover {
+  color: #999;
+  background: #efefef;
+  transition: 0.2s ease;
+}
+
+// @keyframes reveal {
+//   0% {
+//     opacity: 0;
+// /*     margin-left: 360px; */
+//   }
+//   100% {
+//     opacity: 1;
+//     margin-left: 0px;
+//   }
+// }
+// @-webkit-keyframes reveal {
+//   0% {
+//     opacity: 0;
+//     margin-left: 360px;
+//   }
+//   100% {
+//     opacity: 1;
+//     margin-left: 0px;
+//   }
+// }
 
