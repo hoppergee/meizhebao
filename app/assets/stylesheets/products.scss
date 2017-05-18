@@ -1,3 +1,57 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+a:hover {
+	color: black !important;
+}
+
+.shop-container .nav-pills > li > a,
+.shop-container .nav-pills > li > a:hover,
+.shop-container .nav-pills > li > a:focus {
+    background-color: transparent;
+    color: #000;
+    border-radius: 0;
+    padding: 2px 7px;
+}
+
+.shop-container .nav-pills > li > a:hover,
+.shop-container .nav-pills > li > a:focus {
+	border-bottom: 1px solid #f96146;
+}
+
+.shop-container .nav-pills > li.active > a, 
+.shop-container .nav-pills > li.active > a:hover, 
+.shop-container .nav-pills > li.active > a:focus {
+    border-bottom: 1px solid #f96146;
+    background-color: transparent;
+    color: #000;
+    border-radius: 0;
+    padding: 2px 7px;
+}
+
+.shop-container {
+	padding: 0 60px;
+}
+
+.shop-header {
+	// color: red;
+}
+
+#shopping-season-nav {
+	float: left;
+}
+
+.products {
+    margin: 0 60px;
+}
+
+.products .thumbnail {
+    border: none;
+}
+
+.products .thumbnail .caption {
+    text-align: center;
+}
+
+
