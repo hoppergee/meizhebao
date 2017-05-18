@@ -1,14 +1,40 @@
-<div class="row">
-	<% @products.each do |product| %>
-		<div class="col-xs-6 col-md-3">
-			<%= link_to product_path(product) do %>
-				<% if product.image.present? %>
-					<%= image_tag(product.image.thumb.url, class: "thumbnail") %>
-				<% else %>
-					<%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
-				<% end %>
-			<% end %>
-			<%= product.title %> $ <%= product.price %>
-		</div>
-	<% end %>
+
+<div class="shop-container">
+	<div class="shop-header">
+		<a href="#"><%= image_tag("girls.png") %></a>
+		<a href="#"><%= image_tag("boys.png") %></a>
+		
+	    <h1>女娃娃</h1>
+	</div>
+	<ul class="nav nav-pills" style="display: inline-block;">
+		<ul id="shopping-season-nav">
+			<li><%= link_to("2017春夏装", "#") %></li>
+			<li><%= link_to("2016秋冬装（-50% 买一送一）", "#") %></li>
+		</ul>
+		<li class="active"><%= link_to("推荐", "#", class: "disabled") %></li>
+		<li><%= link_to("裙子", "#", class: "disabled") %></li>
+		<li><%= link_to("体恤衫", "#", class: "disabled") %></li>
+		<li><%= link_to("线衣", "#", class: "disabled") %></li>
+		<li><%= link_to("毛衣", "#", class: "disabled") %></li>
+		<li><%= link_to("夹克", "#", class: "disabled") %></li>
+		<li><%= link_to("衬衫", "#", class: "disabled") %></li>
+		<li><%= link_to("睡衣", "#", class: "disabled") %></li>
+		<li><%= link_to("紧身衣", "#", class: "disabled") %></li>
+		<li><%= link_to("所有", "#", class: "disabled") %></li>
+	</ul>
 </div>
+
+<div class="products">
+    <% @products.each do |product| %>
+        <%= link_to(product_path(product), { :class => "col-md-4" }) do %>
+        <div class="thumbnail">
+            <%= image_tag(product.image.thumb.url) %>
+            <div class="caption">
+                <h3>$<%= product.price %></h3>
+                <p><%= product.title %></p>
+            </div>
+        </div>
+        <% end %>
+    <% end %>
+</div>
+   
