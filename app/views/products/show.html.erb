@@ -1,3 +1,28 @@
+<div class="shop-container">
+	<div class="shop-header">
+		<a href="#"><%= image_tag("girls.png") %></a>
+		<a href="#"><%= image_tag("boys.png") %></a>
+		
+	    <h1>女娃娃</h1>
+	</div>
+	<ul class="nav nav-pills" style="display: inline-block;">
+		<ul id="shopping-season-nav">
+			<li><%= link_to("2017春夏装", "#") %></li>
+			<li><%= link_to("2016秋冬装（-50% 买一送一）", "#") %></li>
+		</ul>
+		<li class="active"><%= link_to("推荐", "#", class: "disabled") %></li>
+		<li><%= link_to("裙子", "#", class: "disabled") %></li>
+		<li><%= link_to("体恤衫", "#", class: "disabled") %></li>
+		<li><%= link_to("线衣", "#", class: "disabled") %></li>
+		<li><%= link_to("毛衣", "#", class: "disabled") %></li>
+		<li><%= link_to("夹克", "#", class: "disabled") %></li>
+		<li><%= link_to("衬衫", "#", class: "disabled") %></li>
+		<li><%= link_to("睡衣", "#", class: "disabled") %></li>
+		<li><%= link_to("紧身衣", "#", class: "disabled") %></li>
+		<li><%= link_to("所有", "#", class: "disabled") %></li>
+	</ul>
+</div>
+
 <div class="row">
 	<div class="col-md-6">
 		<% if @product.image.present? %>
@@ -8,13 +33,14 @@
 	</div>
 	<div class="col-md-6">
 		<h2><%= @product.title %></h2>
+		<div class="product price"> $ <%= @product.price %></div>
 		<div style="height: 100px;">
 			<p>
 				<%= @product.description %>
 			</p>
 		</div>
 		<div>数量 ：<%= @product.quantity %></div>
-		<div class="product price"> $ <%= @product.price %></div>
+		
 		<div class="pull-right">
 			<%= link_to("加入购物车", "#", class: "btn btn-danger btn-lg") %>
 		</div>
