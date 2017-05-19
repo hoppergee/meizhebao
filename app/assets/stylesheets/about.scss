@@ -1,0 +1,151 @@
+.persona-grid {
+   margin-top: 50px;
+   margin-bottom: 50px;
+}
+//* 调整图片位置使用！＊//
+
+@media (min-width: 480px) {
+   .persona-grid .row {
+    display:flex;
+   }
+}
+//* 调整图片大小使用，如果没有这个css，背景图片会变得很大，且两张图片不会并列排列！＊//
+
+.persona-grid .persona-link {
+   display: block;
+   position: relative;
+}
+//* 调整链接位置，如果没有这个css，鼠标移动到图片时，链接的阴影部分会占据整个屏幕 *//
+
+.persona-grid .persona-link .info-peek {
+   text-align: center;
+   position: absolute;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   z-index: 4;
+   color: #fff
+}
+//* 调整字体的位置，z-index: 4 & position: absolute使字体可以悬浮于北京图片调整链接位置 *//
+
+.persona-grid .persona-link .info-default {
+   opacity: 0;
+   display: block;
+   position: absolute;
+   width: 100%
+}
+//* 作用是使得白色自字体藏在图片下面，只有鼠标移动到图片上时，字体才会和背景图片一起出现 *//
+
+
+.persona-grid .persona-link .overlay {
+   opacity: 0;
+   position: absolute;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   z-index: 3
+}
+//* 调整背景蓝色图片使用，如果没有这个css，鼠标移动到图片时，背景的蓝色图片将不会出现 和使得蓝色背景图片在实际图片下面。 *//
+
+.persona-grid .persona-link>img {
+   border: 1px solid #000;
+}
+//* 调整图片边框使用，如果没有这个css，图片将不会显示边框 *//
+
+
+.persona-grid .persona-link:hover .info-peek .info-default,.persona-grid .persona-link:hover .overlay {
+   opacity: 1
+}
+//* 当鼠标移动到图片时，可以出现蓝色背景和字体 *//
+
+
+//*1.amy
+.persona-amy .persona-link .overlay {
+   background-color: rgba(35,165,189,0.85)
+
+}
+//* 给amy这个人的图片上加入一张蓝色背景的图片 *//
+
+.persona-amy .persona-link img {
+   border-color: #23a5bd !important
+}
+//* 给amy这个人的图片上加上蓝色边框 *//
+
+
+//*2.ida
+.persona-ida .persona-link .overlay {
+   background-color:  rgba(91,63,130,0.85)
+}
+.persona-ida .persona-link img {
+   border-color: #5b3f82 !important
+}
+
+//*3. matt
+.persona-matt .persona-link .overlay {
+   background-color:   rgba(202,65,66,0.85)
+
+}
+.persona-matt .persona-link img {
+   border-color: #ca4142 !important
+}
+
+//*4.jandd
+.persona-jandd .persona-link .overlay {
+   background-color:   rgba(158,127,87,0.85)
+
+}
+.persona-jandd .persona-link img {
+   border-color:  #9e7f57 !important
+}
+
+
+//*5.brett
+.persona-brett .persona-link .overlay {
+   background-color:   rgba(221,154,73,0.85)
+
+}
+.persona-brett .persona-link img {
+   border-color:  #dd9a49 !important
+}
+
+
+//*6.kira
+.persona-kira .persona-link .overlay {
+   background-color:  rgba(143,150,203,0.85)
+
+}
+.persona-ikira .persona-link img {
+   border-color:  #8f96cb !important
+}
+
+
+//*7.andrew
+.persona-andrew .persona-link .overlay {
+   background-color:  rgba(116,174,122,0.85)
+
+}
+.persona-andrew .persona-link img {
+   border-color:  #74ae7a !important
+}
+
+
+//*8.linda
+.persona-linda .persona-link .overlay {
+   background-color:  rgba(197,61,139,0.85)
+
+}
+.persona-linda .persona-link img {
+   border-color:  #c53d8b !important
+}
+
+
+//*9.sarah
+.persona-sarah .persona-link .overlay {
+   background-color:  rgba(108,100,116,0.85)
+
+}
+.persona-sarah .persona-link img {
+   border-color:  #6c6474 !important
+}
