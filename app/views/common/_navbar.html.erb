@@ -35,10 +35,13 @@
 				<% end %>
 			</div>
 			<div class="col-md-4">
-				<%= link_to("加入", '#') %>
+				<%= link_to("关于", '#') %>
 			</div>
 			<div class="col-md-4">
-				<%= link_to("关于", '#') %>
+				<!-- <%= link_to("关于", '#') %> -->
+				<%= link_to "#" do %>
+					<span class="badge" id="cart_item_count"><%= current_cart.products.count %></span> <i class="fa fa-shopping-cart"></i>
+				<% end %>
 			</div>
 		</div>
 	</div>
