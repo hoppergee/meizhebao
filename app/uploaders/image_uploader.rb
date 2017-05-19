@@ -18,11 +18,18 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :thumb do
     process resize_and_pad: [200, 200]
+
   end
 
   version :medium do
-    process resize_and_pad: [600, 600]
+    process resize_and_pad: [400, 510]
   end
+
+  version :small do
+    process resize_and_pad: [50, 66]
+  end
+
+
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)

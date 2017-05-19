@@ -54,4 +54,84 @@ a:hover {
     text-align: center;
 }
 
+//============ show ==============
+.product-container {
+    margin: 0;
+    padding: 10px;
+}
 
+.product-container .thumbnail {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.product-images {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+// ========== product detail slide ===========
+ 
+ .carousel-control.right {
+  right: 0;
+  left: auto;
+  background-image: none !important;
+}
+ .carousel-control.left {
+  left: 0;
+  right: auto;
+  background-image: none !important;
+}
+#carousel-custom {
+    margin: 20px auto;
+    width: 400px;
+}
+#carousel-custom .carousel-indicators {
+    margin: 10px 0 0;
+    overflow: auto;
+    position: static; //bootstrap 有更改为absolute，所以这个默认值要加上，去覆盖bootstrap的
+    text-align: left;
+    white-space: nowrap; // 防止小图换行
+    width: 100%;
+}
+#carousel-custom .carousel-indicators li {
+    background-color: transparent;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    // display: inline-block;
+    height: auto;
+    margin: 0 !important;
+    width: auto;
+}
+#carousel-custom .carousel-indicators li img {
+    display: block;
+    opacity: 0.5;
+}
+#carousel-custom .carousel-indicators li.active img {
+    opacity: 1;
+}
+#carousel-custom .carousel-indicators li:hover img {
+    opacity: 0.75;
+}
+#carousel-custom .carousel-outer {
+    position: relative;
+}
+.carousel-indicators li img {
+  height: 66px;
+  width: 50px;
+}
+
+// ================= select form ================
+#product-detail-group {
+    padding-left: 5%;
+}
+
+#sel1, #sel2, #sel3 {
+    width: 40%;
+}
+
+// ============== customer review ===============
+#customer-review-group {
+    padding: 60px 100px;
+}
