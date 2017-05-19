@@ -123,7 +123,7 @@
 			</select>
 		</div>
 		
-		<% if @product.quantity.presnet? && @product.quantity > 0 %>
+		<% if @product.quantity.present? && @product.quantity > 0 %>
 			<%= link_to("加入购物车", add_to_cart_product_path(@product), method: :post, class: "btn btn-danger btn-lg") %>
 		<% else %>
 			已销售一空，无法购买
