@@ -23,15 +23,63 @@
 	</ul>
 </div>
 
-<div class="row">
-	<div class="col-md-6">
-		<% if @product.image.present? %>
-			<%= image_tag(@product.image.medium.url, class: "thumbnail") %>
-		<% else %>
-			<%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
-		<% end %>
+<div class="product-container">
+	<div class="col-md-6 product-images">
+		<div id='carousel-custom' class='carousel slide' data-ride='carousel'>
+	        <div class='carousel-inner'>
+	        	<% if @product.image.present? %>
+	        		<%= image_tag(@product.image.medium.url, class: "item active") %>
+	        	<% else %>
+	        		<%= image_tag("http://placehold.it/400x510&text=No Pic", class: "item") %>
+	        	<% end %>
+	            <div class='item'>
+	                <img src='http://images.asos-media.com/inv/media/8/2/3/3/5313328/print/image1xxl.jpg' alt=''id="zoom_05"  data-zoom-image="http://images.asos-media.com/inv/media/8/2/3/3/5313328/print/image1xxl.jpg"/>
+	            </div>
+	            <div class='item'  id="zoom_05">
+	                <img src='http://images.asos-media.com/inv/media/8/2/3/3/5313328/image2xxl.jpg' alt='' data-zoom-image="http://images.asos-media.com/inv/media/8/2/3/3/5313328/image2xxl.jpg" />
+	            </div>
+	            <div class='item'>
+	                <img src='http://images.asos-media.com/inv/media/8/2/3/3/5313328/image3xxl.jpg' alt='' data-zoom-image="http://images.asos-media.com/inv/media/8/2/3/3/5313328/image3xxl.jpg" />
+	            </div>
+	                
+	            <div class='item'>
+	                <img src='http://images.asos-media.com/inv/media/3/6/7/0/4850763/multi/image1xxl.jpg' alt='' data-zoom-image="http://images.asos-media.com/inv/media/3/6/7/0/4850763/multi/image1xxl.jpg" id="zoom_05"/>
+	            </div>
+	            <div class='item'>
+	                <img src='http://images.asos-media.com/inv/media/5/2/1/3/4603125/gold/image1xxl.jpg' alt='' data-zoom-image="http://images.asos-media.com/inv/media/5/2/1/3/4603125/gold/image1xxl.jpg" id="zoom_05"/>
+	            </div>
+	            <div class='item'>
+	                <img src='http://images.asos-media.com/inv/media/5/3/6/8/4948635/mink/image1xxl.jpg' alt='' data-zoom-image="http://images.asos-media.com/inv/media/5/3/6/8/4948635/mink/image1xxl.jpg" id="zoom_05"/>
+	            </div>
+	        </div>
+            
+	        <!-- sag sol -->
+	        <a class='left carousel-control' href='#carousel-custom' data-slide='prev'>
+	            <span class='glyphicon glyphicon-chevron-left'></span>
+	        </a>
+	        <a class='right carousel-control' href='#carousel-custom' data-slide='next'>
+	            <span class='glyphicon glyphicon-chevron-right'></span>
+	        </a>
+
+	        <ol class='carousel-indicators mCustomScrollbar meartlab'>
+	        	<% if @product.image.present? %>
+		        	<li data-target="#carousel-custom" data-slide-to='0'>
+		        		<%= image_tag(@product.image.small.url) %>
+		        	</li>
+				<% else %>
+					<%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+				<% end %>
+		        <li data-target='#carousel-custom' data-slide-to='0' class='active'><img src='http://images.asos-media.com/inv/media/8/2/3/3/5313328/print/image1xxl.jpg' alt='' /></li>
+		        <li data-target='#carousel-custom' data-slide-to='1'><img src='http://images.asos-media.com/inv/media/8/2/3/3/5313328/image2xxl.jpg' alt='' /></li>
+		        <li data-target='#carousel-custom' data-slide-to='2'><img src='http://images.asos-media.com/inv/media/8/2/3/3/5313328/image3xxl.jpg' alt='' /></li>
+		        <li data-target='#carousel-custom' data-slide-to='3'><img src='http://images.asos-media.com/inv/media/3/6/7/0/4850763/multi/image1xxl.jpg' alt='' /></li>
+		        <li data-target='#carousel-custom' data-slide-to='4'><img src='http://images.asos-media.com/inv/media/5/2/1/3/4603125/gold/image1xxl.jpg' alt='' /></li>
+		        <li data-target='#carousel-custom' data-slide-to='5'><img src='http://images.asos-media.com/inv/media/5/3/6/8/4948635/mink/image1xxl.jpg' alt='' /></li>
+	    	</ol>
+		</div>
+
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-6" id="product-detail-group">
 		<h2><%= @product.title %></h2>
 		<div class="product price"> $ <%= @product.price %></div>
 		<div style="height: 100px;">
@@ -39,10 +87,61 @@
 				<%= @product.description %>
 			</p>
 		</div>
-		<div>数量 ：<%= @product.quantity %></div>
-		
-		<div class="pull-right">
-			<%= link_to("加入购物车", "#", class: "btn btn-danger btn-lg") %>
+		<%= fa_icon "heart-o" %> 21
+<!-- 		<h2>颜色</h2>
+		<ul class="nav nav-pills">
+			<li role="presentation" class="active"><a href="#">灰色</a></li>
+			<li role="presentation"><a href="#">红色</a></li>
+			<li role="presentation"><a href="#">黑色</a></li>
+		</ul> -->
+		<div class="form-group">
+			<label for="sel1">颜色</label>
+			<select id="sel1" class="form-control">
+				<option>灰色</option>
+				<option>红色</option>
+				<option>黄色</option>
+				<option>蓝色</option>
+				<option>紫色</option>
+			</select>
+
+			<label for="sel2">尺寸选择</label>
+			<select id="sel2" class="form-control">
+				<option>1岁 - 100元</option>
+				<option>2岁 - 200元</option>
+				<option>3岁 - 230元</option>
+				<option>4岁 - 260元</option>
+				<option>5岁 - 260元</option>
+			</select>
+
+			<label for="sel3">数量</label>
+			<select id="sel3" class="form-control">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+			</select>
 		</div>
+		
+		<%= link_to("加入购物车", "#", class: "btn btn-danger btn-lg") %>
+		<br>
+		<br>
+		<a href="#">加入收藏夹</a>
 	</div>
 </div>
+
+<div class="col-md-12 row" style="display: block;" id="customer-review-group">
+	<h2 style="align:">买家评论(0)</h2>
+	<div class="pull-right">
+		<%= link_to("撰写评论", "#", class: "btn btn-default") %>
+	</div>
+</div>
+
+<!-- <div class="row">
+	<h2>你也许喜欢</h2>
+
+</div> -->
+
+
+
+=
