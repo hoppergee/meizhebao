@@ -28,7 +28,11 @@
     <% @products.each do |product| %>
         <%= link_to(product_path(product), { :class => "col-md-4" }) do %>
         <div class="thumbnail">
-            <%= image_tag(product.image.thumb.url) %>
+        	<% if product.image.present? %>
+            	<%= image_tag(product.image.thumb.url) %>
+        	<% else %>
+        		<%= image_tag("http://placehold.it/200x200&text=No Pic") %>
+        	<% end %>
             <div class="caption">
                 <h3>$<%= product.price %></h3>
                 <p><%= product.title %></p>
