@@ -6,21 +6,19 @@
 		
 	    <h1>女娃娃</h1>
 	</div>
+
 	<ul class="nav nav-pills" style="display: inline-block;">
-		<ul id="shopping-season-nav">
+ 		<ul id="shopping-season-nav">
 			<li><%= link_to("2017春夏装", "#") %></li>
 			<li><%= link_to("2016秋冬装（-50% 买一送一）", "#") %></li>
 		</ul>
-		<li class="active"><%= link_to("推荐", "#", class: "disabled") %></li>
-		<li><%= link_to("裙子", "#", class: "disabled") %></li>
-		<li><%= link_to("体恤衫", "#", class: "disabled") %></li>
-		<li><%= link_to("线衣", "#", class: "disabled") %></li>
-		<li><%= link_to("毛衣", "#", class: "disabled") %></li>
-		<li><%= link_to("夹克", "#", class: "disabled") %></li>
-		<li><%= link_to("衬衫", "#", class: "disabled") %></li>
-		<li><%= link_to("睡衣", "#", class: "disabled") %></li>
-		<li><%= link_to("紧身衣", "#", class: "disabled") %></li>
-		<li><%= link_to("所有", "#", class: "disabled") %></li>
+		<!-- <li class="active"><%= link_to("推荐", "#" ) %></li>÷\ -->
+		<% dress_category.leaves.each do |category| %>
+			<li class="<%= "active" if @category == category %>">
+				<%= link_to(category.name, products_path(type: category)) %>		
+			</li>
+		<% end %>
+		
 	</ul>
 </div>
 
@@ -28,7 +26,11 @@
     <% @products.each do |product| %>
         <%= link_to(product_path(product), { :class => "col-md-4" }) do %>
         <div class="thumbnail">
-            <%= image_tag(product.image.thumb.url) %>
+        	<% if product.image.present? %>
+            	<%= image_tag(product.image.thumb.url) %>
+        	<% else %>
+        		<%= image_tag("http://placehold.it/200x200&text=No Pic") %>
+        	<% end %>
             <div class="caption">
                 <h3>$<%= product.price %></h3>
                 <p><%= product.title %></p>
