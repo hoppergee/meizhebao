@@ -1,7 +1,12 @@
 class ProductsController < ApplicationController
 
 	def index
-		@products = Product.all
+		if params[:type]
+			@category = Category.find(params[:type])
+			@products = Product.where(category: @category)
+		else 
+			@products = Product.all
+		end
 	end
 
 	def show
