@@ -3,7 +3,16 @@ class ProductsController < ApplicationController
 	def index
 		if params[:type]
 			@category = Category.find(params[:type])
-			@products = Product.where(category: @category)
+			if @category.leaf?
+				@products = Product.where(category: @category)
+			else
+				@products = []
+				@category.leaves.each do |category|
+					@products += category.products
+				end
+				@products
+			end
+
 		else 
 			@products = Product.all
 		end
@@ -11,6 +20,7 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
+		@photos = @product.photos.all
 	end
 
 	def add_to_cart

@@ -4,4 +4,6 @@ module ProductsHelper
 		Category.find_by(name: "衣服")
 	end
 
+
+
 end

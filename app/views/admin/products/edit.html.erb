@@ -18,13 +18,18 @@
 		<%= f.input :price %>
 	</div>
 
-	<% if @product.image.present? %>
+	<div class="gorup">
+		<%= f.input :category_id, collection: dress_category.leaves %>
+	</div>
+
+	<% if @product.has_images? %>
 		<span>目标商品图</span> <br>
-		<%= image_tag(@product.image.thumb.url) %>
+		<%= image_tag(@product.head_image.image.thumb.url) %>
 	<% end %>
 
 	<div class="group">
-		<%= f.input :image, as: :file %>
+		<%= f.label :image %>
+		<%= f.file_field :image, :multiple => true, name: "photos[image][]" %>
 	</div>
 
 	<%= f.submit "Submit", data: {disable_with: "Submitting..."} %>
