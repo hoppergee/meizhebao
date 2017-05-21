@@ -1,0 +1,22 @@
+<div class="shop-container">
+	<div class="shop-header">
+		<a href="#"><%= image_tag("girls.png") %></a>
+		<a href="#"><%= image_tag("boys.png") %></a>
+		
+	    <h1>女娃娃</h1>
+	</div>
+
+	<ul class="nav nav-pills" style="display: inline-block;">
+ 		<ul id="shopping-season-nav">
+			<li><%= link_to("2017春夏装", "#") %></li>
+			<li><%= link_to("2016秋冬装（-50% 买一送一）", "#") %></li>
+		</ul>
+		<!-- <li class="active"><%= link_to("推荐", "#" ) %></li>÷\ -->
+		<% dress_category.leaves.each do |category| %>
+			<li class="<%= "active" if @category == category %>">
+				<%= link_to(category.name, products_path(type: category)) %>		
+			</li>
+		<% end %>
+		
+	</ul>
+</div>
