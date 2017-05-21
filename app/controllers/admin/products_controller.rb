@@ -11,16 +11,23 @@ class Admin::ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
+		@photos = @product.photos.all
 	end
 
 	def new
 		@product = Product.new
+		@photo = @product.photos.build
 	end
 
 	def create
 		@product = Product.new(product_params)
 
 		if @product.save
+			if params[:photos] != nil
+				params[:photos]['image'].each do |image|
+					@photo = @product.photos.create!(:image => image)
+				end
+			end
 			redirect_to admin_products_path
 		else
 			render :new
@@ -34,12 +41,23 @@ class Admin::ProductsController < ApplicationController
 	def update
 		@product = Product.find(params[:id])
 
-		if @product.update(product_params)
+		if params[:photos] != nil
+			@product.photos.destroy_all
+			params[:photos]['image'].each do |image|
+				@photo = @product.photos.create!(:image => image)
+			end
+
+			@product.update(product_params)
+			flash[:notice] = "You have update #{@product.title}'s detail"
+			redirect_to admin_products_path
+
+		elsif @product.update(product_params)
 			flash[:notice] = "You have update #{@product.title}'s detail"
 			redirect_to admin_products_path
 		else
 			render :edit
 		end
+				
 	end
 
 	def destroy
@@ -52,7 +70,7 @@ class Admin::ProductsController < ApplicationController
 	private
 
 	def product_params
-		params.require(:product).permit(:title, :description, :quantity, :price, :image)
+		params.require(:product).permit(:title, :description, :quantity, :price, :category_id)
 	end
 
 	def admin_require

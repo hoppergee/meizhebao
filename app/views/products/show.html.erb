@@ -1,56 +1,20 @@
-<div class="shop-container">
-	<div class="shop-header">
-		<a href="#"><%= image_tag("girls.png") %></a>
-		<a href="#"><%= image_tag("boys.png") %></a>
-		
-	    <h1>女娃娃</h1>
-	</div>
-	<ul class="nav nav-pills" style="display: inline-block;">
-		<ul id="shopping-season-nav">
-			<li><%= link_to("2017春夏装", "#") %></li>
-			<li><%= link_to("2016秋冬装（-50% 买一送一）", "#") %></li>
-		</ul>
-		<li class="active"><%= link_to("推荐", "#", class: "disabled") %></li>
-		<li><%= link_to("裙子", "#", class: "disabled") %></li>
-		<li><%= link_to("体恤衫", "#", class: "disabled") %></li>
-		<li><%= link_to("线衣", "#", class: "disabled") %></li>
-		<li><%= link_to("毛衣", "#", class: "disabled") %></li>
-		<li><%= link_to("夹克", "#", class: "disabled") %></li>
-		<li><%= link_to("衬衫", "#", class: "disabled") %></li>
-		<li><%= link_to("睡衣", "#", class: "disabled") %></li>
-		<li><%= link_to("紧身衣", "#", class: "disabled") %></li>
-		<li><%= link_to("所有", "#", class: "disabled") %></li>
-	</ul>
-</div>
+<%= render :partial => "shop_header" %>
 
 <div class="product-container">
 	<div class="col-md-6 product-images">
 		<div id='carousel-custom' class='carousel slide' data-ride='carousel'>
 	        <div class='carousel-inner'>
-	        	<% if @product.image.present? %>
-	        		<%= image_tag(@product.image.medium.url, class: "item active") %>
-	        	<% else %>
-	        		<%= image_tag("http://placehold.it/400x510&text=No Pic", class: "item") %>
-	        	<% end %>
-	            <div class='item'>
-	                <img src='http://images.asos-media.com/inv/media/8/2/3/3/5313328/print/image1xxl.jpg' alt=''id="zoom_05"  data-zoom-image="http://images.asos-media.com/inv/media/8/2/3/3/5313328/print/image1xxl.jpg"/>
-	            </div>
-	            <div class='item'  id="zoom_05">
-	                <img src='http://images.asos-media.com/inv/media/8/2/3/3/5313328/image2xxl.jpg' alt='' data-zoom-image="http://images.asos-media.com/inv/media/8/2/3/3/5313328/image2xxl.jpg" />
-	            </div>
-	            <div class='item'>
-	                <img src='http://images.asos-media.com/inv/media/8/2/3/3/5313328/image3xxl.jpg' alt='' data-zoom-image="http://images.asos-media.com/inv/media/8/2/3/3/5313328/image3xxl.jpg" />
-	            </div>
-	                
-	            <div class='item'>
-	                <img src='http://images.asos-media.com/inv/media/3/6/7/0/4850763/multi/image1xxl.jpg' alt='' data-zoom-image="http://images.asos-media.com/inv/media/3/6/7/0/4850763/multi/image1xxl.jpg" id="zoom_05"/>
-	            </div>
-	            <div class='item'>
-	                <img src='http://images.asos-media.com/inv/media/5/2/1/3/4603125/gold/image1xxl.jpg' alt='' data-zoom-image="http://images.asos-media.com/inv/media/5/2/1/3/4603125/gold/image1xxl.jpg" id="zoom_05"/>
-	            </div>
-	            <div class='item'>
-	                <img src='http://images.asos-media.com/inv/media/5/3/6/8/4948635/mink/image1xxl.jpg' alt='' data-zoom-image="http://images.asos-media.com/inv/media/5/3/6/8/4948635/mink/image1xxl.jpg" id="zoom_05"/>
-	            </div>
+				<% if @photos.present? %>
+					<% @photos.each_with_index do |photo, index| %>
+						<% if index == 0 %>
+							<%= image_tag(photo.image.medium.url, class: "item active") %>
+						<% else %>
+							<%= image_tag(photo.image.medium.url, class: "item") %>
+						<% end %>
+					<% end %>
+				<% else %>
+					<%= image_tag("http://placehold.it/400x510&text=No Pic", class: "item") %>
+				<% end %>
 	        </div>
             
 	        <!-- sag sol -->
@@ -62,19 +26,27 @@
 	        </a>
 
 	        <ol class='carousel-indicators mCustomScrollbar meartlab'>
-	        	<% if @product.image.present? %>
-		        	<li data-target="#carousel-custom" data-slide-to='0'>
-		        		<%= image_tag(@product.image.small.url) %>
-		        	</li>
+	        	<% if @photos.present? %>
+	        		<% @photos.each_with_index do |photo, index| %>
+	        			<% if photo.image.present? %>
+	        				<% if index == 0 %>
+								<li data-target="#carousel-custom" data-slide-to="<%= index %>" class="active">
+		        					<%= image_tag(photo.image.small.url) %>
+		        				</li>
+	        				<% else %>
+	        					<li data-target="#carousel-custom" data-slide-to="<%= index %>">
+		        					<%= image_tag(photo.image.small.url) %>
+		        				</li>
+	        				<% end %>
+
+	        			<% else %>
+	        				<%= image_tag("http://placehold.it/400x400&text=No Pic") %>
+	        			<% end %>
+	        		<% end %>
+
 				<% else %>
-					<%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+					<%= image_tag("http://placehold.it/400x400&text=No Pic") %>
 				<% end %>
-		        <li data-target='#carousel-custom' data-slide-to='0' class='active'><img src='http://images.asos-media.com/inv/media/8/2/3/3/5313328/print/image1xxl.jpg' alt='' /></li>
-		        <li data-target='#carousel-custom' data-slide-to='1'><img src='http://images.asos-media.com/inv/media/8/2/3/3/5313328/image2xxl.jpg' alt='' /></li>
-		        <li data-target='#carousel-custom' data-slide-to='2'><img src='http://images.asos-media.com/inv/media/8/2/3/3/5313328/image3xxl.jpg' alt='' /></li>
-		        <li data-target='#carousel-custom' data-slide-to='3'><img src='http://images.asos-media.com/inv/media/3/6/7/0/4850763/multi/image1xxl.jpg' alt='' /></li>
-		        <li data-target='#carousel-custom' data-slide-to='4'><img src='http://images.asos-media.com/inv/media/5/2/1/3/4603125/gold/image1xxl.jpg' alt='' /></li>
-		        <li data-target='#carousel-custom' data-slide-to='5'><img src='http://images.asos-media.com/inv/media/5/3/6/8/4948635/mink/image1xxl.jpg' alt='' /></li>
 	    	</ol>
 		</div>
 

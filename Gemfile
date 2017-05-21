@@ -37,6 +37,9 @@ gem 'font-awesome-rails'
 gem 'awesome_rails_console'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'figaro'
+gem 'fog'
+
 
 # Tree struct
 gem 'awesome_nested_set'
@@ -44,6 +47,7 @@ gem 'awesome_nested_set'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'pry'
 end
 
 group :development do

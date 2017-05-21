@@ -1,0 +1,27 @@
+<div class="shop-container">
+	<div class="shop-header">
+		<%= link_to(products_path(type: girl_category)) do %>
+			<%= image_tag("girls.png") %>
+		<% end %>
+
+		<%= link_to(products_path(type: boy_category)) do %>
+			<%= image_tag("boys.png", class: "") %>
+		<% end %>
+		
+	    <h1>女娃娃</h1>
+	</div>
+
+	<ul class="nav nav-pills" style="display: inline-block;">
+ 		<ul id="shopping-season-nav">
+			<li><%= link_to("2017春夏装", "#") %></li>
+			<li><%= link_to("2016秋冬装（-50% 买一送一）", "#") %></li>
+		</ul>
+		<!-- <li class="active"><%= link_to("推荐", "#" ) %></li>÷\ -->
+		<% girl_category.leaves.each do |category| %>
+			<li class="<%= "active" if @category == category %>">
+				<%= link_to(category.name, products_path(type: category)) %>		
+			</li>
+		<% end %>
+		
+	</ul>
+</div>
