@@ -1,14 +1,26 @@
 <div class="shop-container">
 	<div class="shop-header">
-		<%= link_to(products_path(type: girl_category)) do %>
-			<%= image_tag("girls.png") %>
-		<% end %>
+		<% if @current_gender_category.name == "男" %>
+			<%= link_to(products_path(type: girl_category)) do %>
+				<%= image_tag("girls-gray.png") %>
+			<% end %>
 
-		<%= link_to(products_path(type: boy_category)) do %>
-			<%= image_tag("boys.png", class: "") %>
-		<% end %>
-		
-	    <h1>女娃娃</h1>
+			<%= link_to(products_path(type: boy_category)) do %>
+				<%= image_tag("boys.png", class: "") %>
+			<% end %>
+			
+		    <h1>男娃娃</h1>
+	    <% else %>
+	    	<%= link_to(products_path(type: girl_category)) do %>
+				<%= image_tag("girls.png") %>
+			<% end %>
+
+			<%= link_to(products_path(type: boy_category)) do %>
+				<%= image_tag("boys-gray.png", class: "") %>
+			<% end %>
+			
+		    <h1>女娃娃</h1>
+	    <% end %>
 	</div>
 
 	<ul class="nav nav-pills" style="display: inline-block;">

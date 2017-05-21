@@ -13,33 +13,10 @@ u.password_confirmation = "123456"
 u.is_admin = true
 u.save
 
-# products_info = [
-# 	{title: '印花卫衣', description: '非常舒适，非常柔软'},
-# 	{title: '柔软舒适针织背心', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '小猪班纳圆领上衣', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '尼龙夏季短袖', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '灯芯绒短裤', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '新款蝴蝶结时尚风衣', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '手织背心', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '亮色运动体桖', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '清爽短裙', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '纯棉圆领上衣', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '公主套装', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '港菲外套防晒', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '361童装休闲体桖', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '百搭衬衣', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '休闲打底', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '圆领吸汗', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '防蚊体桖', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '激光背心', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '卡通长袖', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '圆领印花', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '酷炫墨镜', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '安踏针织裤', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# ]
 
 categories_root = ['书','活动','课程','衣服']
 categories_gender = ['男', '女'] # 男 5 女 6
+categories_season = ['春夏','秋冬'] # 春夏 7 秋冬 8
 categories_boy = ['卫衣','衬衫','外套','夹克','背心','裤装']
 categories_girl = ['外套','睡衣','衬衫','袜子','裙子','裤装','鞋子']
 
@@ -54,23 +31,51 @@ categories_gender.each do |gender_name|
 	Category.create!(name: gender_name).move_to_child_of(dress_category)
 end
 
-boy_category = Category.find_by(name: "男")
-girl_category = Category.find_by(name: "女")
+@boy_category = Category.find_by(name: "男")
+@girl_category = Category.find_by(name: "女")
 
-categories_boy.each do |cat_name|
-	Category.create!(name: cat_name).move_to_child_of(boy_category)
+categories_season.each do |season_name|
+	season = Category.create!(name: season_name)
+	season.move_to_child_of(@boy_category)
+	categories_boy.each do |cat_name|
+		Category.create!(name: cat_name).move_to_child_of(season)
+	end
 end
 
-categories_girl.each do |cat_name|
-	Category.create!(name: cat_name).move_to_child_of(girl_category)
+categories_season.each do |season_name|
+	season = Category.create!(name: season_name)
+	season.move_to_child_of(@girl_category)
+	categories_girl.each do |cat_name|
+		Category.create!(name: cat_name).move_to_child_of(season)
+	end
 end
 
 dress_category.reload
 
 puts "categories建立完毕"
 
+def girl_random_category(name)
+	Category.where(name: name).select { |c| 
+	if rand(1..100) < 80
+		c.parent.parent == @girl_category && c.parent.name == "春夏"
+	else
+		c.parent.parent == @girl_category && c.parent.name == "秋冬"
+	end
+	}.first
+end
+
+def boy_random_category(name)
+	Category.where(name: name).select { |c| 
+	if rand(1..100) < 80
+		c.parent.parent == @boy_category && c.parent.name == "春夏"
+	else
+		c.parent.parent == @boy_category && c.parent.name == "秋冬"
+	end
+	}.first
+end
+
 # ======  男 ==========
-products_info = [
+boy_products_info = [
 {info:[
 	{title: '印花卫衣', description: '非常舒适，非常柔软'},
 	{title: '印花卫衣', description: '非常舒适，非常柔软'},
@@ -79,7 +84,7 @@ products_info = [
 	{title: '印花卫衣', description: '非常舒适，非常柔软'},
 	{title: '漏斗领卫衣', description: '非常舒适，非常柔软'},
 	],
- category: Category.where(name: '卫衣').select { |c| c.parent == boy_category }.first
+category: boy_random_category('卫衣')
 },
 
 {info:[
@@ -89,14 +94,14 @@ products_info = [
 	{title: '连帽外套', description: '非常舒适，非常柔软'},
 	{title: '连帽运动外套', description: '非常舒适，非常柔软'},
 	],
-category: Category.where(name: '外套').select { |c| c.parent == boy_category }.first
+category: boy_random_category('外套')
 },
 
 {info:[
 	{title: '飞行员夹克', description: '非常舒适，非常柔软'},
 	{title: '飞行员夹克', description: '非常舒适，非常柔软'},
 	],
-category: Category.where(name: '夹克').select { |c| c.parent == boy_category }.first
+category: boy_random_category('夹克')
 },
 
 {info:[
@@ -106,7 +111,7 @@ category: Category.where(name: '夹克').select { |c| c.parent == boy_category }
 	{title: '图案背心上衣', description: '非常舒适，非常柔软'},
 	{title: '图案背心上衣', description: '非常舒适，非常柔软'},
 	],
-category: Category.where(name: '背心').select { |c| c.parent == boy_category }.first
+category: boy_random_category('背心')
 },
 
 {info:[
@@ -117,7 +122,7 @@ category: Category.where(name: '背心').select { |c| c.parent == boy_category }
 	{title: '汗布Polo衫', description: '非常舒适，非常柔软'},
 	{title: '长袖T桖', description: '非常舒适，非常柔软'},
 	],
-category: Category.where(name: '衬衫').select { |c| c.parent == boy_category }.first
+category: boy_random_category('衬衫')
 },
 
 {info:[
@@ -131,9 +136,10 @@ category: Category.where(name: '衬衫').select { |c| c.parent == boy_category }
 	{title: '短卫裤', description: '非常舒适，非常柔软'},
 	{title: '西裤', description: '非常舒适，非常柔软'},
 	],
-category: Category.where(name: '裤装').select { |c| c.parent == boy_category }.first
-},
+category: boy_random_category('裤装')
+}]
 
+girl_products_info = [
 {info:[
 	{title: '抓绒外套', description: '非常舒适，非常柔软'},
 	{title: '抓绒外套', description: '非常舒适，非常柔软'},
@@ -142,7 +148,7 @@ category: Category.where(name: '裤装').select { |c| c.parent == boy_category }
 	{title: '连帽外套', description: '非常舒适，非常柔软'},
 	{title: '针织抓绒外套', description: '非常舒适，非常柔软'},
 	],
-category: Category.where(name: '外套').select { |c| c.parent == girl_category }.first
+category: girl_random_category('外套')
 },
 
 {info:[
@@ -151,7 +157,7 @@ category: Category.where(name: '外套').select { |c| c.parent == girl_category 
 	{title: '2套装睡衣套装', description: '非常舒适，非常柔软'},
 	{title: '睡衣', description: '非常舒适，非常柔软'},
 	],
-category: Category.where(name: '睡衣').select { |c| c.parent == girl_category }.first
+category: girl_random_category('睡衣')
 },
 
 {info:[
@@ -161,7 +167,7 @@ category: Category.where(name: '睡衣').select { |c| c.parent == girl_category 
 	{title: '精细针织开衫', description: '非常舒适，非常柔软'},
 	{title: '罗纹汗布衫', description: '非常舒适，非常柔软'},
 	],
-category: Category.where(name: '衬衫').select { |c| c.parent == girl_category }.first
+category: girl_random_category('衬衫')
 },
 
 {info:[
@@ -172,7 +178,7 @@ category: Category.where(name: '衬衫').select { |c| c.parent == girl_category 
 	{title: '5对装踝袜', description: '非常舒适，非常柔软'},
 	{title: '提花图案裤袜', description: '非常舒适，非常柔软'},
 	],
-category: Category.where(name: '袜子').select { |c| c.parent == girl_category }.first
+category: girl_random_category('袜子')
 },
 
 {info:[
@@ -182,7 +188,7 @@ category: Category.where(name: '袜子').select { |c| c.parent == girl_category 
 	{title: '汗布连衣裙', description: '非常舒适，非常柔软'},
 	{title: '薄纱连衣裙', description: '非常舒适，非常柔软'},
 	],
-category: Category.where(name: '裙子').select { |c| c.parent == girl_category }.first
+category: girl_random_category('裙子')
 },
 
 {info:[
@@ -194,7 +200,7 @@ category: Category.where(name: '裙子').select { |c| c.parent == girl_category 
 	{title: '牛仔短裤', description: '非常舒适，非常柔软'},
 	{title: '长裤', description: '非常舒适，非常柔软'},
 	],
-category: Category.where(name: '裤装').select { |c| c.parent == girl_category }.first
+category: girl_random_category('裤装')
 },
 
 {info:[
@@ -205,20 +211,38 @@ category: Category.where(name: '裤装').select { |c| c.parent == girl_category 
 	{title: '贴花凉鞋', description: '非常舒适，非常柔软'},
 	{title: '贴花凉鞋', description: '非常舒适，非常柔软'},
 	],
-category: Category.where(name: '鞋子').select { |c| c.parent == girl_category }.first
+category: girl_random_category('鞋子')
 },
 ]
 
+# puts "鞋子: #{Category.find_by(name: '鞋子').id}"
+# puts "鞋子: #{Category.where(name: '鞋子').select{ |c| c.parent.parent == girl_category && c.parent.name == "春夏" }}"
+
+	# puts "products_info::::->#{products_info.first[:category]}"
 
 
-products_info.each do |product|
+
+boy_products_info.each do |product|
+	product[:info].each do |p|
+		puts "#{product[:category]}"
+		Product.create!(
+			title: p[:title],
+			description: p[:description],
+			quantity: rand(9..20),
+			price: rand(99..299),
+			category_id: product[:category].id
+		)
+	end
+end
+
+girl_products_info.each do |product|
 	product[:info].each do |p|
 		Product.create!(
 			title: p[:title],
 			description: p[:description],
 			quantity: rand(9..20),
 			price: rand(99..299),
-			category: dress_category.leaves.sample
+			category: product[:category]
 		)
 	end
 end

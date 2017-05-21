@@ -24,7 +24,7 @@
 
 	<% if @product.has_images? %>
 		<span>目标商品图</span> <br>
-		<%= image_tag(@product.head_image.image.thumb.url) %>
+		<%= image_tag(@product.head_image.thumb.url) %>
 	<% end %>
 
 	<div class="group">
