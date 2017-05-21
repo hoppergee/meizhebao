@@ -1,7 +1,12 @@
 <div class="shop-container">
 	<div class="shop-header">
-		<a href="#"><%= image_tag("girls.png") %></a>
-		<a href="#"><%= image_tag("boys.png") %></a>
+		<%= link_to(products_path(type: girl_category)) do %>
+			<%= image_tag("girls.png") %>
+		<% end %>
+
+		<%= link_to(products_path(type: boy_category)) do %>
+			<%= image_tag("boys.png", class: "") %>
+		<% end %>
 		
 	    <h1>女娃娃</h1>
 	</div>
@@ -12,7 +17,7 @@
 			<li><%= link_to("2016秋冬装（-50% 买一送一）", "#") %></li>
 		</ul>
 		<!-- <li class="active"><%= link_to("推荐", "#" ) %></li>÷\ -->
-		<% dress_category.leaves.each do |category| %>
+		<% girl_category.leaves.each do |category| %>
 			<li class="<%= "active" if @category == category %>">
 				<%= link_to(category.name, products_path(type: category)) %>		
 			</li>
