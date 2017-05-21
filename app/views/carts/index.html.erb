@@ -7,7 +7,7 @@
 
 <body>
 		<div class="container features">
-					<div class="row">
+					<div class="row" id="cart-title-group">
 						<div class="col-md-12 text-center">
 							<h2>购物袋</h2>
 						</div>
@@ -16,91 +16,92 @@
 					<div class="row">
 						<div class="col-md-7 col-md-offset-1">
 							<% current_cart.cart_items.each do |cart_item| %>
-							<div class="row" style="border-style: ridge; margin-bottom: 10px;">
-									<div class="col-md-4", style="border-style: hidden;">
-										 <%# current_cart.cart_items.each do |cart_item| %>
-											<%= link_to product_path(cart_item.product) do %>
-													<% if cart_item.product.image.present? %>
-														<%= image_tag(cart_item.product.image.thumb.url, class: "thumbnail") %>
-													<% else %>
-														<%= image_tag("http://placehold.it/200*200&text=No Pic", class: "thumbnail") %>
+								<div class="panel panel-default" id="cart-item-card">
+									<div class="panel-body">
+										<div class="col-md-4", style="border-style: hidden;">
+												<%= link_to product_path(cart_item.product) do %>
+														<% if cart_item.product.has_images? %>
+															<%= image_tag(cart_item.product.head_image.thumb.url) %>
+														<% else %>
+															<%= image_tag("http://placehold.it/200*200&text=No Pic") %>
+														<% end %>
+											  <% end %>
+										</div>
+										<div class="col-md-6">
+											<div class="row" style="height: 150px;">
+												<%= link_to(cart_item.product.title, product_path(cart_item.product)) %>
+												<br>
+												¥<%= cart_item.product.price %>
+											  	<br>
+												<br>
+												<br>
+											</div>
+											<div class="row" id="cart-item-button-group">
+												<div class="col-md-4">
+													<%= link_to cart_item_path(cart_item.product_id), method: :delete, class: "btn btn-default", id:"cart-trash-button" do %>
+												   		<i class="fa fa-trash"></i>
 													<% end %>
-										  <% end %>
-										<%# end %>
-									</div>
-								  <div class="col-md-2", style="border-style: hidden; border-style: hidden; padding-top: 10px; padding-right: 0px; padding-bottom: 10px; padding-left: 10px; ">
-                    <%# current_cart.cart_items.each do |cart_item| %>
-											<%= link_to(cart_item.product.title, product_path(cart_item.product)) %>
-											<br>
-											¥<%= cart_item.product.price %>
-										  <br>
-											<br>
-											<br>
-											<%= link_to cart_item_path(cart_item.product_id), method: :delete do %>
-											   <i class="glyphicon glyphicon-trash"></i>
-											<% end %>
-									  <%# end %>
-									</div>
-									<div class="col-md-2", style="border-style: hidden; border-style: hidden; padding-top: 105px; padding-right: 5px; padding-bottom: 0px; padding-left: 10px;">
-                    <%# current_cart.cart_items.each do |cart_item| %>
-											<%= form_for cart_item, url: cart_item_path(cart_item.product_id) do |f| %>
-													<%= f.select :quantity, 1..cart_item.product.quantity %>
-													<%= f.submit "更新", data: { disable_with: "Submiting..." } %>
-											<% end %>
-										<%# end %>
-									</div>
-									<div class="col-md-2", style="border-style: hidden; padding-top: 135px; padding-right: 5px; padding-bottom: 0px; padding-left: 10px;">
-                   <%# current_cart.cart_items.each do |cart_item| %>
-										   <i class="glyphicon glyphicon-heart"></i>
-									 <%# end %>
-									</div>
-									<div class="col-md-2", style="border-style: hidden; padding-top: 10px; padding-right: 5px; padding-bottom: 90px; padding-left: 10px;">
-											总价：¥<%= render_cart_total_price(current_cart) %>
+												</div>
+												<div class="col-md-4">
+													<%= form_for cart_item, url: cart_item_path(cart_item.product_id), html: {id: "cart-index-form"} do |f| %>
+														<%= f.select :quantity, 1..cart_item.product.quantity %>
+														<%#= f.submit "更新", data: { disable_with: "Submiting..." } %>
+													<% end %>
+												</div>
+												<div class="col-md-4">
+													<%= link_to '#', class: "btn btn-default" ,id: "cart-favor-button" do %>
+														<i class="fa fa-heart"></i>
+													<% end %>
+												</div>
+											</div>
+										</div>
+									  
+										<div class="col-md-2", style="border-style: hidden; padding-top: 10px; padding-right: 5px; padding-bottom: 90px; padding-left: 10px;">
+												总价：¥<%= render_cart_total_price(current_cart) %>
+										</div>
 									</div>
 								</div>
 							<% end %>
 						</div>
-						<div class="col-md-4">
-							<div style="border-style: ridge ridge hidden ridge; padding: 20px ;">
-								<h3>购物袋总金额</h3>
+						<div class="col-md-4" id="cart-item-total-group">
+							<div class="panel panel-default">
+								<div class="panel-heading">购物袋总金额</div>
+								<div class="panel-body">
+									订单价值： ¥<%= render_cart_total_price(current_cart) %>
+									<br>
+									送货： ¥0
+									<br>
+									总价： ¥<%= render_cart_total_price(current_cart) %>
+									<br>
+									<br>
+									<%= link_to("确认结账", "#", method: :post, class: "btn btn-lg btn-danger", id:"cart-index-submit") %>
+									<br>
+									<br>
+									价格和运费在结账时才会最终确认。
+									<br>
+									<br>
+									您可以取消订单，前提是您希望退回的商品在不
+									迟于您收到订单商品后的30天内送达给我们。
+									您可在此找到退换货政策全文  退货和退款
+								</div>
 							</div>
-							<div style="border-style: ridge; padding: 20px;">
-								订单价值： ¥<%= render_cart_total_price(current_cart) %>
-								<br>
-								送货： ¥0
-								<br>
-								总价： ¥<%= render_cart_total_price(current_cart) %>
-								<br>
-								<br>
-								<%= link_to("确认结账", "#", method: :post, class: "btn btn-sm btn-danger pull-primary") %>
-								<br>
-								<br>
-								价格和运费在结账时才会最终确认。
-								<br>
-								<br>
-								您可以取消订单，前提是您希望退回的商品在不
-								迟于您收到订单商品后的30天内送达给我们。
-								您可在此找到退换货政策全文  退货和退款
-							</div>
-						</div>
-					</div>
-          <br>
-					<div class="row">
-						<div class="col-md-4 col-md-offset-8">
-							<div style="border-style: ridge; padding: 10px 10px 10px 10px;">
-								请在结账处的“付款与折扣”下输入您的折扣码。
-								<br>
-								<br>
-								整单购物满299元包邮
-								<br>
-								请在结账时输入代码5000获取折扣。
-								<br>
-								<br>
-								退货和退款
-								<br>
-								<br>
-								如果要退货，请自行安排快递并承担快递费用。在此处了解更多有关退货和退款的信息。
-                您的发票将会在您提出要求后，为您提供。在 这里 了解更多有关发票的信息
+
+							<div class="panel panel-default">
+								<div class="panel-body">
+									请在结账处的“付款与折扣”下输入您的折扣码。
+									<br>
+									<br>
+									整单购物满299元包邮
+									<br>
+									请在结账时输入代码5000获取折扣。
+									<br>
+									<br>
+									退货和退款
+									<br>
+									<br>
+									如果要退货，请自行安排快递并承担快递费用。在此处了解更多有关退货和退款的信息。
+	                您的发票将会在您提出要求后，为您提供。在 这里 了解更多有关发票的信息
+								</div>
 							</div>
 						</div>
 					</div>

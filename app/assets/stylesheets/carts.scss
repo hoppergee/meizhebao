@@ -1,3 +1,53 @@
 // Place all the styles related to the carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#cart-title-group {
+	margin-top: 30px;
+}
+
+#cart-item-card {
+	// border: 1px solid #c8c8c8;
+	margin-bottom: 10px;
+	border-radius: 0;
+}
+
+
+
+#cart-trash-button, #cart-favor-button {
+	width: 100px;
+	height: 32px;
+	border-radius: 0;
+	border: 1px solid #c8c8c8;
+}
+
+#cart-index-form #cart_item_quantity {
+	width: 100px;
+	height: 32px;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	border-radius: 0;
+	border: 1px solid #c8c8c8;
+	background-color: transparent;
+	background: url(select.png) no-repeat;
+	padding-left: 55%;
+}
+
+#cart-item-button-group {
+}
+
+#cart-item-total-group .panel-default {
+	border-radius: 0;
+}
+
+#cart-item-total-group .panel-heading {
+	padding: 17px, 24px, 18px;
+	font-size: 18px;
+}
+
+#cart-index-submit {
+	width: 100%;
+	border-radius: 0;
+}
+
