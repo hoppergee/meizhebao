@@ -2,9 +2,9 @@
 	<div id="head-section">
 		<div id="video-title">
 			<h1>宝宝也是哲学家</h1>
-			<%= link_to("现在加入", '#', class: "btn btn-lg btn-danger") %>
+			<%= link_to("现在加入", new_user_registration_path, class: "btn btn-lg btn-danger") %>
 		</div>
-		<video autoplay="" loop="" muted="">
+		<video autoplay="" loop="" muted="" style="width: 100%;">
 			<source src="http://7xss15.com1.z0.glb.clouddn.com/landing_page_video.mp4" type="video/mp4">
 		</video>
 	</div>
@@ -28,21 +28,22 @@
 				<%= image_tag("feature1.png") %>
 				<br>
 				<h3>一次学会爱的旅途</h3>
-				<p>与交流沟通祥光的文字</p>
+				<p>在我们的一步步引导下，你会逐渐领悟到，并不是你去教会宝宝如何去感受世界，而是宝宝来教会你，该如何交流情感，如何去表达爱。</p>
 			</div>
 			<div class="feature-block">
 				<%= image_tag("feature2.png") %>
 				<br>
 				<h3>一次发现美的历程</h3>
-				<p>与穿衣打扮相关的文字</p>
+				<p>在这里我们不是老师，我们是服装设计师，为宝宝设计前卫服装，让宝宝成长在艺术的氛围之中，我们是探险家，用心去探寻宝宝的美丽心灵，让宝宝美的不可方物。</p>
 			</div>
 			<div class="feature-block">
 				<%= image_tag("feature3.png") %>
 				<br>
 				<h3>一次净化心灵的选择</h3>
-				<p>与课程与哲思相关的文字</p>
+				<p>伴宝宝成长不仅有助于我们理解思维如何运作，也帮助我们理解人类处境和爱之本质，十年的时间，进行一次关乎“我如何成为我”的心灵洗礼。</p>
 			</div>
 		</div>
+		<br>
 	</div>
 	<div id="content-section-3" >
 		<div class="content-3 clearfix">
@@ -53,11 +54,11 @@
 			<div class="customer-block-left">
 				<div class="top">
 					<div class="img">
-						<%= image_tag("boy.png") %>
+						<%= image_tag("chenxin.png") %>
 					</div>
 					<div class="name">
-						<span>Xdite老师</span>
-						<p>积极心理学家</p>
+						<span>陈忻</span>
+						<p>美国康涅迪格大学心理学博士</p>
 					</div>
 				</div>
 				<div class="talk">
@@ -67,15 +68,15 @@
 			<div class="customer-block-right">
 				<div class="top">
 					<div class="img">
-						<%= image_tag("boy.png") %>
+						<%= image_tag("AlfieKohn.png") %>
 					</div>
 					<div class="name">
-						<span>Xdite老师</span>
-						<p>积极心理学家</p>
+						<span>Alfie Kohn</span>
+						<p>无条件养育作者</p>
 					</div>
 				</div>
 				<div class="talk">
-						养育孩子是我们生命中意义最深远的经历，孩子们确实让我们看到了真理、美和意义。
+						这很难，但值得我们全力以赴。
 				</div>
 			</div>
 		</div>
@@ -83,101 +84,9 @@
 	<div id="content-section-bottom">
 		<div class="bottom-content">
 			<p>现在预约可免费体验5节课</p>
-			<%= link_to("现在加入", '#', class: "btn btn-danger btn-lg") %>
+			<%= link_to("现在加入", new_user_registration_path, class: "btn btn-danger btn-lg") %>
 		</div>
 	</div>
 
 </div>
 
-
-
-<!-- <div class="card-container home loaded">
-	<div>
-		<div>
-			<div class="frame top"><div></div></div>
-			<div class="frame right"><div></div></div>
-			<div class="frame bottom"><div></div></div>
-			<div class="frame left"><div></div></div>
-			
-			<div class="content">
-									<h2>
-						<a href="/" class="logo">Jova</a>
-						<div class="border bottom"><div></div></div>
-					</h2>
-					<h3>
-						<span class="left">Construction</span>
-						<span class="right">Renovation</span>
-						<div class="border bottom"><div></div></div>
-					</h3>
-
-					<ul class="menu">
-						<li class="hover-effect-1">
-							<a href="portfolio">
-								<span class="effect" data-hover="Portfolio">
-									<span class="small">Latest Work</span>
-									<span class="big">
-										<span>Portfolio</span>
-									</span>
-								</span>
-							</a>
-							<div class="border right"><div></div></div>
-						</li>
-						<li class="hover-effect-1">
-							<a href="about-us">
-								<span class="effect" data-hover="Jova">
-									<span class="small">About</span>
-									<span class="big">
-										<span>Jova</span>
-									</span>
-								</span>
-							</a>
-							<div class="border right"><div></div></div>
-						</li>
-						<li class="hover-effect-1">
-							<a href="contact-us">
-								<span class="effect" data-hover="Contact Us">
-									<span class="small">Coordinates</span>
-									<span class="big">
-										<span>Contact Us</span>
-									</span>
-								</span>
-							</a>
-						</li>
-						<li class="hover-effect-1">
-							<a href="services-offered">
-								<span class="effect" data-hover="Services Offered">
-									<span class="small">List of</span>
-									<span class="big">
-										<span>Services Offered</span>
-									</span>
-								</span>
-							</a>
-							<div class="border right"><div></div></div>
-							<div class="border top"><div></div></div>
-						</li>
-						<li class="hover-effect-1">
-							<a href="tips-and-tricks">
-								<span class="effect" data-hover="Tips and Tricks">
-									<span class="small">Good to know</span>
-									<span class="big">
-										<span>Tips and Tricks</span>
-									</span>
-								</span>
-							</a>
-							<div class="border top"><div></div></div>
-						</li>
-					</ul>
-
-					<a href="" class="btn-previous">
-						<span class="small">Prev.</span>
-						<div class="border right"><div></div></div>
-					</a>
-					<a href="" class="btn-next">
-						<span class="small">Next</span>
-						<div class="border left"><div></div></div>
-					</a>
-							</div>
-		</div>
-	</div>
-</div>
- -->
