@@ -1,0 +1,50 @@
+<div class="container" style="margin-top: 100px;">
+  <div class="row text-center"><h3>该页面正在打造中</h3></div>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+      <span>60% Complete</span>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="panel panel-success">
+    <div class="panel-heading">
+        童装商城
+    </div>
+    <div class="panel-body">
+      我们的商城页面已经完成,可点击下面的按钮观赏
+      <%= link_to("商城", products_path, class: "btn btn-primary pull-right") %>
+    </div>
+  </div>
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+        登录／注册
+    </div>
+    <div class="panel-body">
+      我的登录注册页面也特别定制过
+      <%= link_to("注册", new_user_registration_path, class: "btn btn-danger pull-right") %>
+    </div>
+  </div>
+
+  <div class="panel panel-success">
+    <div class="panel-heading">
+        关于我们
+    </div>
+    <div class="panel-body">
+        关于我们页面有有趣的东东哦
+        <%= link_to("关于", new_welcome_path, class: "btn btn-primary pull-right") %>
+    </div>
+  </div>
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+        Lading Page
+    </div>
+    <div class="panel-body">
+       我们的Lading Page 也是很美的哟
+       <%= link_to("首页", "/", class: "btn btn-danger pull-right") %>
+    </div>
+  </div>
+
+</div>
