@@ -1,26 +1,32 @@
 class ProductsController < ApplicationController
 
 	def index
+
 		if params[:type]
 			@category = Category.find(params[:type])
+
 			if @category.leaf?
 				@products = Product.where(category: @category)
+				@current_gender_category = @products.first.current_gender_category
 			else
 				@products = []
 				@category.leaves.each do |category|
 					@products += category.products
 				end
 				@products
+				@current_gender_category = @products.first.current_gender_category
 			end
 
 		else 
 			@products = Product.all
+			@current_gender_category = Category.find_by(name: "女")
 		end
 	end
 
 	def show
 		@product = Product.find(params[:id])
 		@photos = @product.photos.all
+		@current_gender_category = @product.current_gender_category
 	end
 
 	def add_to_cart

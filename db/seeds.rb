@@ -13,30 +13,6 @@ u.password_confirmation = "123456"
 u.is_admin = true
 u.save
 
-# products_info = [
-# 	{title: '印花卫衣', description: '非常舒适，非常柔软'},
-# 	{title: '柔软舒适针织背心', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '小猪班纳圆领上衣', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '尼龙夏季短袖', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '灯芯绒短裤', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '新款蝴蝶结时尚风衣', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '手织背心', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '亮色运动体桖', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '清爽短裙', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '纯棉圆领上衣', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '公主套装', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '港菲外套防晒', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '361童装休闲体桖', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '百搭衬衣', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '休闲打底', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '圆领吸汗', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '防蚊体桖', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '激光背心', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '卡通长袖', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '圆领印花', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '酷炫墨镜', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# 	{title: '安踏针织裤', description: '非常舒适，非常柔软', quantity: 11, price: 9000},
-# ]
 
 categories_root = ['书','活动','课程','衣服']
 categories_gender = ['男', '女'] # 男 5 女 6
@@ -218,7 +194,7 @@ products_info.each do |product|
 			description: p[:description],
 			quantity: rand(9..20),
 			price: rand(99..299),
-			category: dress_category.leaves.sample
+			category: product[:category]
 		)
 	end
 end

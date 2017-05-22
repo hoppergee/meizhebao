@@ -3,10 +3,10 @@
 	<div class="container-fluid">
 		<div class="col-md-5">
 			<div class="col-md-4">
-				<%= link_to("课程", '#') %>
+				<%= link_to("课程", '/welcome/fix') %>
 			</div>
 			<div class="col-md-4">
-				<%= link_to("哲思录", '#') %>
+				<%= link_to("哲思录", '/welcome/fix') %>
 			</div>
 			<div class="col-md-4">
 				<%= link_to("商城", products_path(type: girl_category)) %>
@@ -22,7 +22,7 @@
 				<% else %>
 					<div class="dropdown">
 						<a href="" class="dropdown-toggle" data-toggle="dropdown">
-							<%= current_user.email %>
+							宝妈 宝爸
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">

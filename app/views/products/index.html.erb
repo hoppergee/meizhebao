@@ -6,12 +6,12 @@
         <%= link_to(product_path(product), { :class => "col-md-4" }) do %>
         <div class="thumbnail">
         	<% if product.has_images? %>
-            	<%= image_tag(product.head_image.thumb.url) %>
+            	<%= image_tag(product.head_image.common.url) %>
         	<% else %>
-        		<%= image_tag("http://placehold.it/200x200&text=No Pic") %>
+        		<%= image_tag("http://placehold.it/300x300&text=No Pic") %>
         	<% end %>
             <div class="caption">
-                <h3>$<%= product.price %></h3>
+                <h3>¥<%= product.price %></h3>
                 <p><%= product.title %></p>
             </div>
         </div>

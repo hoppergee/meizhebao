@@ -3,4 +3,7 @@ class Category < ApplicationRecord
 
 	has_many :products
 
+	def current_dress_category
+		
+	end
 end
