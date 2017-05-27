@@ -40,6 +40,8 @@ gem 'mini_magick'
 gem 'figaro'
 gem 'fog'
 
+gem 'letter_opener', group: :development
+
 
 # Tree struct
 gem 'awesome_nested_set'
