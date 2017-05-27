@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
   	@current_cart ||= find_cart
   end
 
+  def admin_required
+    current_user.admin?
+  end
+
   private
 
   def find_cart
