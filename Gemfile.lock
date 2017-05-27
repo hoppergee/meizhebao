@@ -2,6 +2,8 @@ GEM
   remote: https://rubygems.org/
   specs:
     CFPropertyList (2.3.5)
+    aasm (4.12.0)
+      concurrent-ruby (~> 1.0)
     actioncable (5.0.0)
       actionpack (= 5.0.0)
       nio4r (~> 1.2)
@@ -358,6 +360,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   awesome_nested_set
   awesome_rails_console
   bootstrap-sass

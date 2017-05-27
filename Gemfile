@@ -41,6 +41,7 @@ gem 'figaro'
 gem 'fog'
 
 gem 'letter_opener', group: :development
+gem 'aasm'
 
 
 # Tree struct
