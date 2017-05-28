@@ -22,7 +22,11 @@
 				<% else %>
 					<div class="dropdown">
 						<a href="" class="dropdown-toggle" data-toggle="dropdown">
-							宝妈 宝爸
+							<% if current_user && current_user.username %>
+								<%= current_user.username %>
+							<% else %>
+								宝妈，宝爸
+							<% end %>
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
