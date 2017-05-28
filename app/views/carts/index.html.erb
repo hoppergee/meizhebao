@@ -74,7 +74,7 @@
 									总价： ¥<%= render_cart_total_price(current_cart) %>
 									<br>
 									<br>
-									<%= link_to("确认结账", "#", method: :post, class: "btn btn-lg btn-danger", id:"cart-index-submit") %>
+									<%= link_to("确认结账", checkout_carts_path, method: :post, class: "btn btn-lg btn-danger", id:"cart-index-submit") %>
 									<br>
 									<br>
 									价格和运费在结账时才会最终确认。
