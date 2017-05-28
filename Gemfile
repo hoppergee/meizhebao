@@ -39,6 +39,10 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'figaro'
 gem 'fog'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
+gem 'omniauth-github'
 
 gem 'letter_opener', group: :development
 gem 'aasm'
