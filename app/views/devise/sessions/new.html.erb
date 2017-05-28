@@ -44,15 +44,29 @@
 	<div class="box right">
 	    <div class="info signin-info">
 	      <span class="sign-via">其它方式登录</span>
-	      <button class="social-network facebook"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</button>
-	      <button class="social-network twitter"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</button>
-	      <button class="social-network google"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</button>
+	      <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+	      	<button class="social-network facebook"><i class="fa fa-google" aria-hidden="true"></i>Google</button>
+	      <% end %>
+	      <%= link_to user_facebook_omniauth_authorize_path do %>
+	      	<button class="social-network twitter"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</button>
+	      <% end %>
+	      <%= link_to user_github_omniauth_authorize_path do %>
+	      	<button class="social-network facebook"><i class="fa fa-github" aria-hidden="true"></i>Github</button>
+	      <% end %>
+
 	    </div>
 	    <div class="info signup-info">
 	      <span class="sign-via">Sign up via... </span>
-	      <button class="social-network facebook"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</button>
-	      <button class="social-network twitter"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</button>
-	      <button class="social-network google"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</button>
+	      <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+	      	<button class="social-network facebook"><i class="fa fa-google" aria-hidden="true"></i>Google</button>
+	      <% end %>
+	      <%= link_to user_facebook_omniauth_authorize_path do %>
+	      	<button class="social-network twitter"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</button>
+	      <% end %>
+	      <%= link_to user_github_omniauth_authorize_path do %>
+	      	<button class="social-network facebook"><i class="fa fa-github" aria-hidden="true"></i>Github</button>
+	      <% end %>
+
 	    </div>
 	</div>
 </div>
