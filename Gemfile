@@ -47,6 +47,10 @@ gem 'omniauth-github'
 gem 'letter_opener', group: :development
 gem 'aasm'
 
+# I18n
+gem 'rails-i18n'
+gem 'devise-i18n'
+
 
 # Tree struct
 gem 'awesome_nested_set'

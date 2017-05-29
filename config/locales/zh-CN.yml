@@ -1,0 +1,10 @@
+"zh-CN":
+  girls: "女娃娃"
+  boys: "男娃娃"
+  sign:
+    forgot_password: "忘记密码?"
+    read_term: "请阅读我们使用条款与责任条约"
+    email: "邮箱地址"
+    username: "用户名"
+    password: "请输入密码"
+    password_confirm: "请在此输入密码"

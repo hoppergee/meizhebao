@@ -20,4 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  girls: "Girls"
+  boys: "Boys"
+  sign:
+    forgot_password: "forgot your password?"
+    read_term: "Please Read Our Terms and conditions"
+    email: "Email"
+    username: "Username"
+    password: "Please input password."
+    password_confirm: "Please input password again."
