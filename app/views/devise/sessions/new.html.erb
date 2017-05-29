@@ -11,12 +11,12 @@
 
 				<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 				 <div class="form-inputs">
-				   <%= f.text_field :email, placeholder: "Email", label:false, required: false, autofocus: true %>
-				   <%= f.password_field :password, placeholder: "请输入密码", label:false, required: false %>
+				   <%= f.text_field :email, placeholder: t("sign.email"), label:false, required: false, autofocus: true %>
+				   <%= f.password_field :password, placeholder: t("sign.password"), label:false, required: false %>
 				 </div>
 				 <div class="form-actions">
-				   <%= f.submit "登录", class: "submit" %>
-				   <a href="#" class="extra-link">Forgot your password?</a>
+				   <%= f.submit "登录", class: "submit"%>
+				   <a href="#" class="extra-link" id="forgot-pass"><%= t("sign.forgot_password") %></a>
 				 </div>
 		       <% end %>
 
@@ -26,14 +26,15 @@
 				<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
 				  <div class="form-inputs">
-				    <%= f.text_field :email, placeholder: "Email", required: true, autofocus: true %>
-				    <%= f.password_field :password, placeholder: "请输入密码", required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-				    <%= f.password_field :password_confirmation, placeholder: "请再次输入密码", required: true %>
+				    <%= f.text_field :email, placeholder: t("sign.email"), required: true, autofocus: true %>
+				    <%= f.text_field :username, placeholder: t("sign.username"), required: true, autofocus: true %>
+				    <%= f.password_field :password, placeholder: t("sign.password"), required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+				    <%= f.password_field :password_confirmation, placeholder: t("sign.password_confirm"), required: true %>
 				  </div>
 
 				  <div class="form-actions">
 				    <%= f.submit "注册", class: "submit" %>
-				    <a href="#" class="extra-link">Please Read Our Terms and conditions</a>
+				    <a href="#" class="extra-link"><%= t("sign.read_term") %></a>
 				  </div>
 				<% end %>
 
@@ -44,15 +45,31 @@
 	<div class="box right">
 	    <div class="info signin-info">
 	      <span class="sign-via">其它方式登录</span>
-	      <button class="social-network facebook"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</button>
-	      <button class="social-network twitter"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</button>
-	      <button class="social-network google"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</button>
+	      <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+	      	<button class="social-network facebook"><i class="fa fa-google" aria-hidden="true"></i>Google</button>
+	      <% end %>
+	      <%= link_to user_facebook_omniauth_authorize_path do %>
+	      	<button class="social-network twitter"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</button>
+	      <% end %>
+	      <%= link_to user_github_omniauth_authorize_path do %>
+	      	<button class="social-network facebook"><i class="fa fa-github" aria-hidden="true"></i>Github</button>
+	      <% end %>
+
+
+	      <!-- <button class="social-network google"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</button> -->
 	    </div>
 	    <div class="info signup-info">
 	      <span class="sign-via">Sign up via... </span>
-	      <button class="social-network facebook"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</button>
-	      <button class="social-network twitter"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</button>
-	      <button class="social-network google"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</button>
+	      <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+	      	<button class="social-network facebook"><i class="fa fa-google" aria-hidden="true"></i>Google</button>
+	      <% end %>
+	      <%= link_to user_facebook_omniauth_authorize_path do %>
+	      	<button class="social-network twitter"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</button>
+	      <% end %>
+	      <%= link_to user_github_omniauth_authorize_path do %>
+	      	<button class="social-network facebook"><i class="fa fa-github" aria-hidden="true"></i>Github</button>
+	      <% end %>
+
 	    </div>
 	</div>
 </div>

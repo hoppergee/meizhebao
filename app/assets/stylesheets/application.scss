@@ -212,6 +212,10 @@ input:-webkit-autofill{
   background: linear-gradient(310deg, rgba(0,0,0,0.5), rgba(0,0,0,0.28));
 }
 
+#forgot-pass {
+	margin-right: 18px;
+}
+
 .sign-container h1 {
   font-size: 1.5em;
   font-weight: 700;
@@ -319,7 +323,7 @@ input:-webkit-autofill{
 
 .tab-content .form-actions {
   position: absolute;
-  bottom: 0;
+  bottom: -30px;
   width: 100%;
 }
 .tab-content .form-actions a {
@@ -385,6 +389,10 @@ button.social-network {
   cursor: pointer;
   animation: reveal 0.9s ease;
 
+}
+
+button.social-network>i {
+	margin-top: 5px;
 }
 
 button i{

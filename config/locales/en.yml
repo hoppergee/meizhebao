@@ -20,4 +20,34 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  girls: "Girls"
+  boys: "Boys"
+  sign:
+    forgot_password: "forgot your password?"
+    read_term: "Please Read Our Terms and conditions"
+    email: "Email"
+    username: "Username"
+    password: "Please input password."
+    password_confirm: "Please input password again."
+  product:
+    color: "Color"
+    size: "Size"
+    quantity: "Quantity"
+    add_to_cart: "Add to Cart"
+    add_to_favor: "Add to Favor"
+    review: "Review"
+    post_review: "Write Comment"
+    new_season: "summer 2017"
+    discount_season: "autumn/winter 2016 (-50% off)"
+  navbar:
+    course: "Course"
+    philosophy_notes: "PhiloNotes"
+    shop: "Shop"
+    login: "Log In"
+    about: "About"
+    order_lists: "Order Lists"
+    profile: "Profile"
+    logout: "Log Out"
+    default_username: "Mum & Dad"
+  admin:
+    panel: "Admin Panel"

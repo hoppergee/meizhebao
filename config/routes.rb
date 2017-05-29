@@ -53,4 +53,8 @@ Rails.application.routes.draw do
 	resources :courses
 	resources :courseones
 
+	resources :about
+
+	resource :user
+
 end

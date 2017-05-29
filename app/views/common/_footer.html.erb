@@ -44,6 +44,13 @@
 		</div>
 
 		<div class="row">
+			<div class="container">
+				<%= link_to "中文版", :controller => controller_name, :action => action_name, :locale => "zh-CN" %>
+				<%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %>
+			</div>
+		</div>
+
+		<div class="row">
 			<div class="col-md-6 text-right" style="border-style:hidden; margin-top: 15px; margin-bottom: 25px;">
                 <li class="item">
 					<a class="footer-brand" href="#"><i class="fa fa-weibo fa-3x" aria-hidden="true"></i></a>
