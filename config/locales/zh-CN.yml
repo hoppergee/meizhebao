@@ -25,6 +25,7 @@
     login: "登入"
     about: "关于"
     order_lists: "个人订单列表"
+    profile: "修改个人资料"
     logout: "注销"
     default_username: "宝妈&宝爸"
   admin:

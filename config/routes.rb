@@ -52,4 +52,6 @@ Rails.application.routes.draw do
 
 	resources :about
 
+	resource :user
+
 end

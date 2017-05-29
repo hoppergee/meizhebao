@@ -46,6 +46,7 @@ en:
     login: "Log In"
     about: "About"
     order_lists: "Order Lists"
+    profile: "Profile"
     logout: "Log Out"
     default_username: "Mum & Dad"
   admin:

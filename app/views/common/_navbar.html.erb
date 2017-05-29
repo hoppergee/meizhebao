@@ -35,6 +35,7 @@
 							<% end %>
 							<li>
 								<li><%= link_to(t("navbar.order_lists"), account_orders_path) %></li>
+								<li><%= link_to(t("navbar.profile"), edit_user_path) %></li>
 							</li>
 							<li><%= link_to(content_tag(:i, t("navbar.logout"), class: 'fa fa-sign-out'), destroy_user_session_path, method: :delete) %></li>
 						</ul>
