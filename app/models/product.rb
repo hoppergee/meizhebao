@@ -35,5 +35,9 @@ class Product < ApplicationRecord
 		current
 	end
 
+	def to_param
+		"#{self.id}-#{self.title}"
+	end
+
 
 end
