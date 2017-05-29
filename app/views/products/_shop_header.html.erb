@@ -15,8 +15,8 @@
 
 		<ul class="nav nav-pills shop-header-list" style="display: inline-block;">
 	 		<ul id="shopping-season-nav">
-				<li><%= link_to("2017当季新品", "#") %></li>
-				<li><%= link_to("2016清仓打折（-50% 买一送一）", "#") %></li>
+				<li><%= link_to(t("product.new_season"), "#") %></li>
+				<li><%= link_to(t("product.discount_season"), "#") %></li>
 			</ul>
 			<% boy_category.leaves.each do |category| %>
 				<li class="<%= "active" if @category == category %>">
@@ -39,8 +39,8 @@
 
 		<ul class="nav nav-pills shop-header-list" style="display: inline-block;">
 	 		<ul id="shopping-season-nav">
-				<li><%= link_to("2017当季新品", "#") %></li>
-				<li><%= link_to("2016清仓打折（-50% 买一送一）", "#") %></li>
+				<li><%= link_to(t("product.new_season"), "#") %></li>
+				<li><%= link_to(t("product.discount_season"), "#") %></li>
 			</ul>
 			<% girl_category.leaves.each do |category| %>
 				<li class="<%= "active" if @category == category %> ">
