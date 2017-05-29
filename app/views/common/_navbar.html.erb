@@ -3,13 +3,13 @@
 	<div class="container-fluid">
 		<div class="col-md-5">
 			<div class="col-md-4">
-				<%= link_to("课程", '/welcome/fix') %>
+				<%= link_to(t("navbar.course"), '/welcome/fix') %>
 			</div>
 			<div class="col-md-4">
-				<%= link_to("哲思录", '/welcome/fix') %>
+				<%= link_to(t("navbar.philosophy_notes"), '/welcome/fix') %>
 			</div>
 			<div class="col-md-4">
-				<%= link_to("商城", products_path(type: girl_category)) %>
+				<%= link_to(t("navbar.shop"), products_path(type: girl_category)) %>
 			</div>
 		</div>
 		<div class="col-md-2" id="web-head-title">
@@ -18,31 +18,32 @@
 		<div class="col-md-5">
 			<div class="col-md-4">
 				<% if !current_user %>
-					<%= link_to("登入", new_user_registration_path) %>
+					<%= link_to(t("navbar.login"), new_user_registration_path) %>
 				<% else %>
 					<div class="dropdown">
 						<a href="" class="dropdown-toggle" data-toggle="dropdown">
 							<% if current_user && current_user.username %>
 								<%= current_user.username %>
 							<% else %>
-								宝妈，宝爸
+								<%= t("navbar.default_username") %>
 							<% end %>
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
 							<% if current_user.admin? %>
-								<li><%= link_to("Admin Panel", admin_products_path) %></li>
+								<li><%= link_to(t("admin.panel"), admin_products_path) %></li>
 							<% end %>
 							<li>
-								<li><%= link_to("个人订单列表", account_orders_path) %></li>
+								<li><%= link_to(t("navbar.order_lists"), account_orders_path) %></li>
+								<li><%= link_to(t("navbar.profile"), edit_user_path) %></li>
 							</li>
-							<li><%= link_to(content_tag(:i, '注销', class: 'fa fa-sign-out'), destroy_user_session_path, method: :delete) %></li>
+							<li><%= link_to(content_tag(:i, t("navbar.logout"), class: 'fa fa-sign-out'), destroy_user_session_path, method: :delete) %></li>
 						</ul>
 					</div>
 				<% end %>
 			</div>
 			<div class="col-md-4">
-				<%= link_to("关于", new_welcome_path) %>
+				<%= link_to(t("navbar.about"), about_index_path) %>
 			</div>
 			<div class="col-md-4">
 				<%= link_to carts_path do %>

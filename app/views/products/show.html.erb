@@ -67,7 +67,7 @@
 			<li role="presentation"><a href="#">黑色</a></li>
 		</ul> -->
 		<div class="form-group">
-			<label for="sel1">颜色</label>
+			<label for="sel1"><%= t("product.color") %></label>
 			<select id="sel1" class="form-control">
 				<option>灰色</option>
 				<option>红色</option>
@@ -76,7 +76,7 @@
 				<option>紫色</option>
 			</select>
 
-			<label for="sel2">尺寸选择</label>
+			<label for="sel2"><%= t("prodcut.size") %></label>
 			<select id="sel2" class="form-control">
 				<option>1岁 - 100元</option>
 				<option>2岁 - 200元</option>
@@ -85,7 +85,7 @@
 				<option>5岁 - 260元</option>
 			</select>
 
-			<label for="sel3">数量</label>
+			<label for="sel3"><%= t("product.quantity") %></label>
 			<select id="sel3" class="form-control">
 				<option>1</option>
 				<option>2</option>
@@ -96,20 +96,20 @@
 		</div>
 		
 		<% if @product.quantity.present? && @product.quantity > 0 %>
-			<%= link_to("加入购物车", add_to_cart_product_path(@product), method: :post, class: "btn btn-danger btn-lg") %>
+			<%= link_to(t("product.add_to_cart"), add_to_cart_product_path(@product), method: :post, class: "btn btn-danger btn-lg") %>
 		<% else %>
 			已销售一空，无法购买
 		<% end %>
 		<br>
 		<br>
-		<a href="#">加入收藏夹</a>
+		<a href="#"><%= t("product.add_to_favor") %></a>
 	</div>
 </div>
 
 <div class="col-md-12 row" style="display: block;" id="customer-review-group">
-	<h2 style="align:">买家评论(0)</h2>
+	<h2 style="align:"><%= t("product.review") %>(0)</h2>
 	<div class="pull-right">
-		<%= link_to("撰写评论", "#", class: "btn btn-default") %>
+		<%= link_to(t("product.post_review"), "#", class: "btn btn-default") %>
 	</div>
 </div>
 
