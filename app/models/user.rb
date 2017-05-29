@@ -13,6 +13,10 @@ class User < ApplicationRecord
 		is_admin
 	end
 
+	def username_required?
+		false
+	end
+
 	def self.from_google(access_token, signed_in_resource=nil)
 		data = access_token.info
 		identify = Identify.find_by(provider: access_token.provider, uid: access_token.uid)
