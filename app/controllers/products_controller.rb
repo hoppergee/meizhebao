@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
 	end
 
 	def show
-		@product = Product.find(params[:id])
+		@product = Product.find_by_friendly_id!(params[:id])
 		@photos = @product.photos.all
 		@current_gender_category = @product.current_gender_category
 	end
