@@ -562,10 +562,10 @@ products_info.each do |product|
 					product: cp,
 					image: open(url)
 				)
-				puts("#{cp.title}第#{index}张图")
+				puts("#{cp.title}第#{index+1}张图")
 			end
 		end
-		puts("===创建完第#{index}个产品(#{cp.title})===")
+		puts("===创建完第#{index+1}个产品(#{cp.title})===")
 	end
 end
 
