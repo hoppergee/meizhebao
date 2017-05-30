@@ -546,7 +546,7 @@ category: Category.where(name: '鞋子').select { |c| c.parent == girl_category 
 
 
 products_info.each do |product|
-	product[:info].each do |p|
+	product[:info].each_with_index do |p, index|
 		cp = Product.create!(
 			title: p[:title],
 			description: p[:description],
@@ -557,14 +557,15 @@ products_info.each do |product|
 
 		urls = p[:images]
 		if urls 
-			urls.each do |url|
+			urls.each_with_index do |url, index|
 				Photo.create(
 					product: cp,
 					image: open(url)
 				)
-				puts(cp.title)
+				puts("#{cp.title}第#{index}张图")
 			end
 		end
+		puts("===创建完第#{index}个产品(#{cp.title})===")
 	end
 end
 
