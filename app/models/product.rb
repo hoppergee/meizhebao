@@ -1,5 +1,9 @@
 class Product < ApplicationRecord
 
+	has_many :variants, :dependent => :destroy
+
+	accepts_nested_attributes_for :variants, :allow_destroy => true, :reject_if => :all_blank
+
 	belongs_to :category
 
 	has_many :photos

@@ -4,7 +4,9 @@
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th width="80%">商品明细</th>
+					<th width="60%">商品明细</th>
+					<th>颜色</th>
+					<th>尺寸</th>
 					<th>单价</th>
 					<th>数量</th>
 				</tr>
@@ -14,10 +16,16 @@
 				<% current_cart.cart_items.each do |cart_item| %>
 					<tr>
 						<td>
-							<%= link_to(cart_item.product.title, product_path(cart_item.product)) %>
+							<%= link_to(cart_item.variant.product.title, product_path(cart_item.variant.product)) %>
 						</td>
 						<td>
-							<%= cart_item.product.price %>
+							<%= cart_item.variant.color %>
+						</td>
+						<td>
+							<%= cart_item.variant.size %>
+						</td>
+						<td>
+							<%= cart_item.variant.price.current %>
 						</td>
 						<td>
 							<%= cart_item.quantity %>

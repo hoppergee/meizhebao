@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606023824) do
+ActiveRecord::Schema.define(version: 20170531115818) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "cart_id"
-    t.integer  "product_id"
     t.integer  "quantity",   default: 1
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "variant_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -82,6 +82,14 @@ ActiveRecord::Schema.define(version: 20170606023824) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "prices", force: :cascade do |t|
+    t.integer  "variant_id"
+    t.decimal  "current",    precision: 10, scale: 2
+    t.decimal  "origin",     precision: 10, scale: 2
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
   create_table "product_lists", force: :cascade do |t|
     t.integer  "order_id"
     t.string   "product_name"
@@ -123,6 +131,16 @@ ActiveRecord::Schema.define(version: 20170606023824) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "variants", force: :cascade do |t|
+    t.integer  "product_id"
+    t.string   "size"
+    t.string   "color"
+    t.integer  "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_variants_on_product_id"
   end
 
 end

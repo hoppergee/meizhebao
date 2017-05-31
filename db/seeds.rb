@@ -11,6 +11,7 @@ u.email = "admin@qq.com"
 u.password = "123456"
 u.password_confirmation = "123456"
 u.is_admin = true
+u.username = "管理员1"
 u.save
 
 
