@@ -113,7 +113,7 @@
 			</select>
 		</div>
 		
-		<% if @product.quantity.present? && @product.quantity > 0 %>
+		<%# if @product.quantity.present? && @product.quantity > 0 %>
 			<%= form_tag add_to_cart_product_path(@product), method: :post do %>
 
 				<% @colors.each do |c| %>
@@ -136,9 +136,9 @@
 				<button class="btn btn-danger btn-lg" type="submit">加入购物车</button>
 			<% end %>
 			<%#= link_to(t("product.add_to_cart"), add_to_cart_product_path(@product), method: :post, class: "btn btn-danger btn-lg") %>
-		<% else %>
+		<%# else %>
 			已销售一空，无法购买
-		<% end %>
+		<%# end %>
 		<br>
 		<br>
 		<a href="#"><%= t("product.add_to_favor") %></a>
