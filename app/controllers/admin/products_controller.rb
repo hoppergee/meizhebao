@@ -42,9 +42,9 @@ class Admin::ProductsController < ApplicationController
 		@product = Product.find_by_friendly_id!(params[:id])
 		@product.variants.build if @product.variants.empty?
 		@variants = @product.variants.empty? ? [@product.variants.build] : @product.variants
-		@variants.each do |v|
-			v.create_price unless v.price
-		end
+		# @variants.each do |v|
+		# 	v.create_price unless v.price
+		# end
 	end
 
 	def update

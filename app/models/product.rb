@@ -39,6 +39,22 @@ class Product < ApplicationRecord
 		current
 	end
 
+	def has_any_stock?
+		if self.stock > 0
+			return true
+		else
+			return false
+		end
+	end
+
+	def stock
+		quantity = 0
+		self.variants.each do |v|
+			quantity += v.quantity
+		end
+		quantity
+	end
+
 	before_validation :generate_friendly_id, :on => :create
 	validates_presence_of :title, :friendly_id
 

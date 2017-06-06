@@ -544,17 +544,33 @@ category: Category.where(name: '鞋子').select { |c| c.parent == girl_category 
 },
 ]
 
-
+pre_colors = ["灰色","蓝色","黄色","紫色","红色","绿色"]
+pre_sizes = ["50cm","60cm","70cm","80cm","90cm","100cm","110cm","120cm"]
 
 products_info.each do |product|
 	product[:info].each_with_index do |p, index|
 		cp = Product.create!(
 			title: p[:title],
 			description: p[:description],
-			quantity: rand(9..20),
 			price: rand(99..299),
 			category: product[:category]
 		)
+
+		pre_colors.sample(3).each do |color|
+			pre_sizes.sample(3).each do |size|
+				variant = Variant.create!(
+							size: size,
+							color: color,
+							quantity: rand(9..20),
+							product: cp
+							)
+				Price.create!(
+					variant: variant,
+					current: rand(99..199),
+					origin: rand(199..299)
+					)
+			end
+		end
 
 		urls = p[:images]
 		if urls 

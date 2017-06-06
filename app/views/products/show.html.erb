@@ -51,26 +51,27 @@
 				<%= @product.description %>
 			</p>
 		</div>
-		<%= fa_icon "heart-o" %> 21
 		
-		<%# if @product.quantity.present? && @product.quantity > 0 %>
-			<%= form_tag add_to_cart_product_path(@product), method: :post do %>
+		<%= form_tag add_to_cart_product_path(@product), method: :post do %>
 
-				<div class="form-group">
-					<%= label_tag :color, t("product.color") %>
-					<%= select_tag :color, options_for_select(@colors), :data => { :url => select_color_product_path(@product) }, :id => "toggle-select-color", :prompt => "请选择颜色", class: "form-control" %>
-				</div>
+			<div class="form-group">
+				<%= label_tag :color, t("product.color") %>
+				<%= select_tag :color, options_for_select(@colors), :data => { :url => select_color_product_path(@product) }, :id => "toggle-select-color", :prompt => "请选择颜色", class: "form-control" %>
+			</div>
 
-				<div class="form-group">
-					<%= label_tag :size, t("product.size") %>
-					<%= select_tag :size,  options_for_select(@sizes), :data => { :url => select_color_product_path(@product) }, :id => "toggle-select-size", :prompt => "选择尺寸", class: "form-control"%>
-				</div>
+			<div class="form-group">
+				<%= label_tag :size, t("product.size") %>
+				<%= select_tag :size,  options_for_select(@sizes), :data => { :url => select_color_product_path(@product) }, :id => "toggle-select-size", :prompt => "选择尺寸", class: "form-control"%>
+			</div>
 
-				<div class="form-group">
-					<h3>库存:</h3>
-					<span id="variant-current-quantity"><%= @current_quantity %></span>
-				</div>
+			<div class="form-group">
+				库存:
+				<span id="variant-current-quantity"><%= @current_quantity %></span>
+			</div>
 
+			<br>
+
+			<% if @product.has_any_stock? %>
 				<button class="btn btn-danger btn-lg btn-radius-custom" type="submit">加入购物车</button>
 
 				<div class="btn-radius-custom" id="product-quantity-select">
@@ -80,13 +81,13 @@
 						<button type="button" id="quantity-plus">+</button>
 						<%#= link_to("+", '#', class: "", id: "quantity-plus") %>
 				</div>
+			<% else %>
+				已销售一空，无法购买
 			<% end %>
-			<%#= link_to(t("product.add_to_cart"), add_to_cart_product_path(@product), method: :post, class: "btn btn-danger btn-lg") %>
-		<%# else %>
-			已销售一空，无法购买
-		<%# end %>
+		<% end %>
 		<br>
 		<br>
+		<span><%= fa_icon "heart-o" %> 21</span>
 		<a href="#"><%= t("product.add_to_favor") %></a>
 	</div>
 </div>
@@ -262,4 +263,4 @@
 	})
 
 </script>
-=
+

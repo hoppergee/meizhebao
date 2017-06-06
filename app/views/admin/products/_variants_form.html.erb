@@ -16,7 +16,7 @@
           <%= ff.text_field :quantity, :class => "form-control" %>
         </div>
 
-  			<%= ff.fields_for :price do |fff| %>
+  			<%= ff.fields_for :price, (ff.object.build_price unless ff.object.price) do |fff| %>
   				<div class="form-group">
   					<%= fff.label :current %>
   					<%= fff.text_field :current, :class => "form-control" %>
