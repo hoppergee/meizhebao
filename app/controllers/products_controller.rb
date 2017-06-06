@@ -36,6 +36,9 @@ class ProductsController < ApplicationController
 		@variants.each do |v|
 			@current_quantity += v.quantity
 		end
+		prices = @variants.map { |v| v.price.origin }
+		@max_price = prices.max
+		@min_price = prices.min
 	end
 
 	def select_color
@@ -71,7 +74,7 @@ class ProductsController < ApplicationController
 				current_variants.each do |v|
 					@current_quantity += v.quantity
 				end
-				prices = current_variants.map(|v| v.price.origin)
+				prices = current_variants.map{ |v| v.price.origin }
 				@max_price = prices.max
 				@min_price = prices.min
 				@has_many = true
@@ -80,7 +83,7 @@ class ProductsController < ApplicationController
 				@variants.each do |v|
 					@current_quantity += v.quantity
 				end
-				prices = @variants.map(|v| v.price.origin)
+				prices = @variants.map{ |v| v.price.origin }
 				@max_price = prices.max
 				@min_price = prices.min
 				@has_many = true
@@ -91,7 +94,7 @@ class ProductsController < ApplicationController
 		end
 
 		# binding.pry
-		if has_many 
+		if @has_many
 			render :json => { :message => "ok", 
 							:current_quantity => @current_quantity, 
 							current_color: @color, 

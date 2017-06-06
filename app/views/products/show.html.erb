@@ -45,7 +45,7 @@
 	</div>
 	<div class="col-md-6" id="product-detail-group">
 		<h2><%= @product.title %></h2>
-		<h3 class="product-price"> $ <%= @product.price %></h3>
+		<h3 id="product-price"> $ <%= @min_price %> ~ <%= @max_price %></h3>
 		<div style="height: 100px;">
 			<p>
 				<%= @product.description %>
@@ -123,10 +123,9 @@
 				$("#variant-current-quantity").html(data["current_quantity"]);
 
 				if (data["has_many"]) {
-					console.log("酷酷的有很多")
-					// $("#product-price")
+					$("#product-price").html(' $ ' + data["min_price"] + ' ~ ' + data["max_price"])
 				} else {
-					console.log("酷酷的唯一")
+					$("#product-price").html(' $ ' + data["current_price"] + '   ' + '<span style="text-decoration: line-through;">' + data["origin_price"] + '</span>')
 				}
 
 				var colors = data["colors"];
@@ -193,6 +192,13 @@
 			success: function(data){
 				console.log(data["current_quantity"])
 				$("#variant-current-quantity").html(data["current_quantity"]);
+
+				if (data["has_many"]) {
+					$("#product-price").html(' $ ' + data["min_price"] + ' ~ ' + data["max_price"])
+				} else {
+					$("#product-price").html(' $ ' + data["current_price"] + '   ' + '<span style="text-decoration: line-through;">' + data["origin_price"] + '</span>')
+				}
+
 				var colors = data["colors"];
 				var sizes = data["sizes"];
 				var current_color = data["current_color"];
