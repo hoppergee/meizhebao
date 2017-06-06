@@ -33,6 +33,59 @@ class ProductsController < ApplicationController
 		@sizes = @variants.map { |v| v.size}.uniq
 	end
 
+	def select_color
+		# binding.pry
+		@product = Product.find_by_friendly_id!(params[:id])
+		@variants = @product.variants
+		@color = params[:color]
+		@size = params[:size]
+		unless @color.blank?
+			unless @size.blank?
+				@variant = @variants.where(color: @color, size: @size).first
+				@current_quantity = @variant.quantity unless @variant.blank?
+			else
+				current_variants = @variants.where(color: @color)
+				@current_quantity = 0
+				current_variants.each do |v|
+					@current_quantity += v.quantity
+				end
+			end
+			@colors = @variants.map { |v| v.color}.uniq
+			@sizes = @variants.where(color: @color).map { |v| v.size }.uniq
+		else
+			unless @size.blank?
+				current_variants = @variants.where(size: @size)
+				@current_quantity = 0
+				current_variants.each do |v|
+					@current_quantity += v.quantity
+				end
+			else
+				@current_quantity = 0
+				@variants.each do |v|
+					@current_quantity += v.quantity
+				end
+			end
+			@sizes = @variants.map{ |v| v.size }.uniq
+			@colors = @variants.where(size: @size).map{ |v| v.color }.uniq
+		end
+
+		# binding.pry
+		render :json => { :message => "ok", :current_quantity => @current_quantity, current_color: @color, current_size: @size, colors: @colors, sizes: @sizes }
+
+	    # respond_to do |format|
+	    #   format.html  # 如果客户端要求 HTML，则回传 index.html.erb
+	    #   format.js    # 如果客户端要求 JavaScript，回传 index.js.erb
+	    # end
+	end
+
+	def quantity_plus_one
+		
+	end
+
+	def quantity_minus_one
+		
+	end
+
 	def add_to_cart
 		@product = Product.find_by_friendly_id!(params[:id])
 		@quantity = params[:quantity].to_i

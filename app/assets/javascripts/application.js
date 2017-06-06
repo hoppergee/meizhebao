@@ -33,4 +33,5 @@ $(document).on("turbolinks:load", function(){
 	$('#variant-form').change(function(){
 		this.submit()
 	})
+
 })

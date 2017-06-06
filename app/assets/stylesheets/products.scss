@@ -143,6 +143,12 @@
   width: 50px;
 }
 
+// =============== product other detail ===========
+
+.product-price {
+    color: #d9534f;
+}
+
 // ================= select form ================
 #product-detail-group {
     padding-left: 5%;
@@ -150,6 +156,50 @@
 
 #sel1, #sel2, #sel3 {
     width: 40%;
+}
+
+#product-quantity-select {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border: 1px solid #edeff2; 
+    width: 150px;
+}
+
+#product-quantity-select {
+    display: inline;
+    margin-left: 20px;
+}
+
+#product-quantity-select > input {
+    width: 50px;
+    display: inline;
+    text-align: center;
+    border: none;
+}
+
+#product-quantity-select > a {
+    font-weight: bold;
+}
+
+#product-quantity-select #quantity-minus {
+    margin-left: 5px;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+#product-quantity-select #quantity-plus {
+    margin-right: 5px;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+#product-detail-group .btn-radius-custom {
+    border-radius: 9999px;
+}
+
+#product-detail-group .form-group > select {
+    width: 20%;
 }
 
 // ============== customer review ===============
