@@ -18,5 +18,10 @@
 //= require bootstrap/tab
 //= require bootstrap/carousel
 //= require bootstrap/transition
+//= require wow.min
+//= require autosize.min
 //= require_tree .
 
+$(document).ready(function(){
+   new WOW().init();
+ })

@@ -52,6 +52,9 @@ Rails.application.routes.draw do
 
 	resources :courses
 	resources :courseones
+	resources :courseoneslessonones
+	
+	resources :posts
 
 	resources :about
 

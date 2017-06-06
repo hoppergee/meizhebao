@@ -1,0 +1,14 @@
+<div id="courseoneslessonone-<%= courseoneslessonone.id %>" class="panel panel-default">
+  <div class="panel-heading">
+    <%= courseoneslessonone.user.display_name %>
+  </div>
+  <div class="panel-body">
+    <%= courseoneslessonone.content %>
+
+    <% if current_user && courseoneslessonone.user == current_user %>
+      <p class="text-right">
+        <%= link_to "Delete", courseoneslessonone_path(courseoneslessonone), :method => :delete, :class => "btn btn-danger", :remote => true %>
+      </p>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+        <div class="thumbnail  wow slideInLeft">
+            <img src="https://zero-to-three.s3.amazonaws.com/images/601/0f86ef93-44a5-4030-8c9c-cf0cc6d6fda9-medium.jpg?1464881613" alt="Lights" style="width:100%">
+            <div class="caption">
+              <p>Our work and expertise in social-emotional development demonstrate that early connections last a lifetime. Your gift allows us to extend our work of ensuring all babies have a strong start in life. There is much to be done, and we are delighted to have your support as we continue this important work..</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 text-center">
+      <div class="panel panel-default">
+          <div class="panel-body">
+            售价: ￥76.40 (6折)
+            <hr>
+            <%= link_to("加入购物车","#", method: :courseoneslessonone, class: "btn btn-danger btn-lg" ) %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container">
+  <p>
+  <a id="my-click">Click Me</a>
+</p>
+
+<div id="foo" style="border: 1px solid red;">
+  <p>bar</p>
+</div>
+
+<script>
+  $("#my-click").click(function(){
+    $("#foo").html('<h1>zoo</h1>');
+  })
+</script>
+</div> -->
+
+<div class="container">
+       <%= form_for Courseoneslessonone.new, :remote => true do |f| %>
+         <div class="form-group">
+           <%= f.text_area :content, :class => "form-control" %>
+         </div>
+         <div class="form-group">
+           <%= f.submit :class => "btn btn-primary" %>
+         </div>
+      <% end %>
+
+      <div id="courseoneslessonone-list">
+        <% @courseoneslessonones.each do |courseoneslessonone| %>
+
+         <%= render :partial => "courseoneslessonone", :locals => { :courseoneslessonone => courseoneslessonone } %>
+
+        <% end %>
+      </div>
+
+</div>
