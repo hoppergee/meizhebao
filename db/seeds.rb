@@ -547,13 +547,16 @@ category: Category.where(name: '鞋子').select { |c| c.parent == girl_category 
 pre_colors = ["灰色","蓝色","黄色","紫色","红色","绿色"]
 pre_sizes = ["50cm","60cm","70cm","80cm","90cm","100cm","110cm","120cm"]
 
+create_num = 0
+
 products_info.each do |product|
 	product[:info].each_with_index do |p, index|
 		cp = Product.create!(
 			title: p[:title],
 			description: p[:description],
 			price: rand(99..299),
-			category: product[:category]
+			category: product[:category],
+			friendly_id: SecureRandom.uuid
 		)
 
 		pre_colors.sample(3).each do |color|
@@ -582,7 +585,8 @@ products_info.each do |product|
 				puts("#{cp.title}第#{index+1}张图")
 			end
 		end
-		puts("===创建完第#{index+1}个产品(#{cp.title})===")
+		create_num += 1
+		puts("===创建完第#{index+1}个产品(#{cp.title})【#{create_num}/72】===")
 	end
 end
 
