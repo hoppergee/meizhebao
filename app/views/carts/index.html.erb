@@ -19,9 +19,9 @@
 								<div class="panel panel-default" id="cart-item-card">
 									<div class="panel-body">
 										<div class="col-md-4", style="border-style: hidden;">
-												<%= link_to product_path(cart_item.product) do %>
-														<% if cart_item.product.has_images? %>
-															<%= image_tag(cart_item.product.head_image.thumb.url) %>
+												<%= link_to product_path(cart_item.variant.product) do %>
+														<% if cart_item.variant.product.has_images? %>
+															<%= image_tag(cart_item.variant.product.head_image.thumb.url) %>
 														<% else %>
 															<%= image_tag("http://placehold.it/200*200&text=No Pic") %>
 														<% end %>
@@ -29,22 +29,26 @@
 										</div>
 										<div class="col-md-6">
 											<div class="row" style="height: 150px;">
-												<%= link_to(cart_item.product.title, product_path(cart_item.product)) %>
+												<%= link_to(cart_item.variant.product.title, product_path(cart_item.variant.product)) %>
 												<br>
-												¥<%= cart_item.product.price %>
+												¥<%= cart_item.variant.price.current %>
+												<br>
+												<%= cart_item.variant.color %>
+												<br>
+												<%= cart_item.variant.size %>
 											  	<br>
 												<br>
 												<br>
 											</div>
 											<div class="row" id="cart-item-button-group">
 												<div class="col-md-4">
-													<%= link_to cart_item_path(cart_item.product_id), method: :delete, class: "btn btn-default", id:"cart-trash-button" do %>
+													<%= link_to cart_item_path(cart_item.variant_id), method: :delete, class: "btn btn-default", id:"cart-trash-button" do %>
 												   		<i class="fa fa-trash"></i>
 													<% end %>
 												</div>
 												<div class="col-md-4">
-													<%= form_for cart_item, url: cart_item_path(cart_item.product_id), html: {id: "cart-index-form"} do |f| %>
-														<%= f.select :quantity, 1..cart_item.product.quantity %>
+													<%= form_for cart_item, url: cart_item_path(cart_item.variant_id), html: {id: "cart-index-form"} do |f| %>
+														<%= f.select :quantity, 1..cart_item.variant.quantity %>
 														<%#= f.submit "更新", data: { disable_with: "Submiting..." } %>
 													<% end %>
 												</div>
@@ -57,7 +61,7 @@
 										</div>
 									  
 										<div class="col-md-2", style="border-style: hidden; padding-top: 10px; padding-right: 5px; padding-bottom: 90px; padding-left: 10px;">
-												总价：¥<%= render_cart_total_price(current_cart) %>
+												共计：¥<%= render_cart_item_total_price(cart_item) %>
 										</div>
 									</div>
 								</div>

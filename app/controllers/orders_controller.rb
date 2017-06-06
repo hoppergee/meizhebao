@@ -10,13 +10,14 @@ class OrdersController < ApplicationController
 			current_cart.cart_items.each do |cart_item|
 				product_list = ProductList.new
 				product_list.order = @order
-				product_list.product_name = cart_item.product.title
-				product_list.product_price = cart_item.product.price
+				product_list.product_name = cart_item.variant.product.title
+				product_list.product_price = cart_item.variant.product.price
+				product_list.variant = cart_item.variant
 				product_list.quantity = cart_item.quantity
 				product_list.save
 			end
 			current_cart.clean!
-			OrderMailer.notify_order_placed(@order).deliver!
+			# OrderMailer.notify_order_placed(@order).deliver!
 
 			redirect_to order_path(@order.token)
 		else
@@ -47,7 +48,7 @@ class OrdersController < ApplicationController
 
 	def apply_to_cancel
 		@order = Order.find_by_token(params[:id])
-		OrderMailer.apply_cancel(@order).deliver!
+		# OrderMailer.apply_cancel(@order).deliver!
 		flash[:notice] = "已提交申请"
 		redirect_to :back
 	end

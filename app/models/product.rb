@@ -1,5 +1,9 @@
 class Product < ApplicationRecord
 
+	has_many :variants, :dependent => :destroy, inverse_of: :product
+
+	accepts_nested_attributes_for :variants, :allow_destroy => true, :reject_if => :all_blank
+
 	belongs_to :category
 
 	has_many :photos
@@ -33,6 +37,22 @@ class Product < ApplicationRecord
 			current = current.parent
 		end
 		current
+	end
+
+	def has_any_stock?
+		if self.stock > 0
+			return true
+		else
+			return false
+		end
+	end
+
+	def stock
+		quantity = 0
+		self.variants.each do |v|
+			quantity += v.quantity
+		end
+		quantity
 	end
 
 	before_validation :generate_friendly_id, :on => :create

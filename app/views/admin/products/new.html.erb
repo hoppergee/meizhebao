@@ -11,10 +11,6 @@
 	</div>
 
 	<div class="group">
-		<%= f.input :quantity %>
-	</div>
-
-	<div class="group">
 		<%= f.input :price %>
 	</div>
 
@@ -33,6 +29,8 @@
   		<%= f.text_field :friendly_id, :required => true, :class => "form-control" %>
   		<p>限小写英树枝及横线， 将作为网址的一部分</p>
   	</div>
+
+	<%= render 'variants_form' , f: f %>
 
 	<%= f.submit "Submit", data: { disable_with: "Submiting..." } %>
 

@@ -20,8 +20,18 @@
 //= require bootstrap/transition
 //= require wow.min
 //= require autosize.min
+//= require nested_form_fields
 //= require_tree .
 
-$(document).ready(function(){
-   new WOW().init();
- })
+
+
+$(document).on("turbolinks:load", function(){
+
+	new WOW().init();
+
+	// $('#cart-index-submit').on('click', function() { $('#cart-index-form').submit(); });
+	$('#variant-form').change(function(){
+		this.submit()
+	})
+
+})

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 	resources :products do
 		member do
 			post :add_to_cart
+			post :select_color
 		end
 	end
 
@@ -57,7 +58,6 @@ Rails.application.routes.draw do
 	resources :posts
 
 	resources :about
-
 	resource :user
 
 end
