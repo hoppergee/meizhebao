@@ -31,6 +31,11 @@ class ProductsController < ApplicationController
 		@variants = @product.variants
 		@colors = @variants.map { |v| v.color}.uniq
 		@sizes = @variants.map { |v| v.size}.uniq
+
+		@current_quantity = 0
+		@variants.each do |v|
+			@current_quantity += v.quantity
+		end
 	end
 
 	def select_color
@@ -43,12 +48,19 @@ class ProductsController < ApplicationController
 			unless @size.blank?
 				@variant = @variants.where(color: @color, size: @size).first
 				@current_quantity = @variant.quantity unless @variant.blank?
+				@origin_price = @variant.price.origin
+				@current_price = @variant.price.current
+				@has_many = false
 			else
 				current_variants = @variants.where(color: @color)
 				@current_quantity = 0
 				current_variants.each do |v|
 					@current_quantity += v.quantity
 				end
+				prices = current_variants.map { |v| v.price.origin }
+				@max_price = prices.max
+				@min_price = prices.min
+				@has_many = true
 			end
 			@colors = @variants.map { |v| v.color}.uniq
 			@sizes = @variants.where(color: @color).map { |v| v.size }.uniq
@@ -59,31 +71,52 @@ class ProductsController < ApplicationController
 				current_variants.each do |v|
 					@current_quantity += v.quantity
 				end
+				prices = current_variants.map(|v| v.price.origin)
+				@max_price = prices.max
+				@min_price = prices.min
+				@has_many = true
 			else
 				@current_quantity = 0
 				@variants.each do |v|
 					@current_quantity += v.quantity
 				end
+				prices = @variants.map(|v| v.price.origin)
+				@max_price = prices.max
+				@min_price = prices.min
+				@has_many = true
 			end
 			@sizes = @variants.map{ |v| v.size }.uniq
-			@colors = @variants.where(size: @size).map{ |v| v.color }.uniq
+			@colors = @variants.map { |v| v.color}.uniq
+			# @colors = @variants.where(size: @size).map{ |v| v.color }.uniq
 		end
 
 		# binding.pry
-		render :json => { :message => "ok", :current_quantity => @current_quantity, current_color: @color, current_size: @size, colors: @colors, sizes: @sizes }
+		if has_many 
+			render :json => { :message => "ok", 
+							:current_quantity => @current_quantity, 
+							current_color: @color, 
+							current_size: @size, 
+							colors: @colors, 
+							sizes: @sizes,
+							has_many: @has_many,
+							max_price: @max_price,
+							min_price: @min_price}
+		else
+			render :json => { :message => "ok", 
+							:current_quantity => @current_quantity, 
+							current_color: @color, 
+							current_size: @size, 
+							colors: @colors, 
+							sizes: @sizes,
+							has_many: @has_many,
+							origin_price: @origin_price,
+							current_price: @current_price}	
+		end
 
 	    # respond_to do |format|
 	    #   format.html  # 如果客户端要求 HTML，则回传 index.html.erb
 	    #   format.js    # 如果客户端要求 JavaScript，回传 index.js.erb
 	    # end
-	end
-
-	def quantity_plus_one
-		
-	end
-
-	def quantity_minus_one
-		
 	end
 
 	def add_to_cart

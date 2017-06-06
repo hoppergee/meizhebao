@@ -16,8 +16,6 @@ Rails.application.routes.draw do
 		member do
 			post :add_to_cart
 			post :select_color
-			post :quantity_plus_one
-			post :quantity_minus_one
 		end
 	end
 

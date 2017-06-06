@@ -68,7 +68,7 @@
 
 				<div class="form-group">
 					<h3>库存:</h3>
-					<span id="variant-current-quantity"></span>
+					<span id="variant-current-quantity"><%= @current_quantity %></span>
 				</div>
 
 				<button class="btn btn-danger btn-lg btn-radius-custom" type="submit">加入购物车</button>
@@ -115,11 +115,20 @@
 			dataType: "json",
 			data: {
 				color: $(this).val(),
-				size: $("#toggle-select-size").val()
+				// size: $("#toggle-select-size").val()
+				size: ""
 			},
 			success: function(data){
 				console.log(data["current_quantity"])
 				$("#variant-current-quantity").html(data["current_quantity"]);
+
+				if (data["has_many"]) {
+					console.log("酷酷的有很多")
+					// $("#product-price")
+				} else {
+					console.log("酷酷的唯一")
+				}
+
 				var colors = data["colors"];
 				var sizes = data["sizes"];
 				var current_color = data["current_color"];
@@ -146,9 +155,13 @@
 
 					$(this).prop("disabled", false);
 
-					if ($(this).val() != "" && $(this).val() == current_size) {
-						$(this).replaceWith('<option selected="selected" value=' + current_size + '>' + current_size + '</option>');
+					if ($(this).val() == "") {
+						$(this).replaceWith('<option selected="selected" value="">选择尺寸</option>');
 					}
+
+					// if ($(this).val() != "" && $(this).val() == current_size) {
+					// 	$(this).replaceWith('<option selected="selected" value=' + current_size + '>' + current_size + '</option>');
+					// }
 
 					var results = sizes.indexOf($(this).val());
 
@@ -184,23 +197,23 @@
 				var sizes = data["sizes"];
 				var current_color = data["current_color"];
 				var current_size = data["current_size"];
-				$("#toggle-select-color").children().each(function(index){
+				// $("#toggle-select-color").children().each(function(index){
 
-					$(this).prop("disabled", false);
+				// 	$(this).prop("disabled", false);
 
-					if ($(this).val() != "" && $(this).val() == current_color) {
-						$(this).replaceWith('<option selected="selected" value=' + current_color + '>' + current_color + '</option>');
-					}
+				// 	if ($(this).val() != "" && $(this).val() == current_color) {
+				// 		$(this).replaceWith('<option selected="selected" value=' + current_color + '>' + current_color + '</option>');
+				// 	}
 
-					var results = colors.indexOf($(this).val());
+				// 	var results = colors.indexOf($(this).val());
 
-					console.log( index + $(this).val());
+				// 	console.log( index + $(this).val());
 
-					if (index != 0 && results == -1) {
-						$(this).attr('disabled', 'disabled');
-					}
+				// 	if (index != 0 && results == -1) {
+				// 		$(this).attr('disabled', 'disabled');
+				// 	}
 
-				});
+				// });
 
 				$("#toggle-select-size").children().each(function(index){
 
