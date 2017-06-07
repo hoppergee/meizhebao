@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606023824) do
+ActiveRecord::Schema.define(version: 20170607002554) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "cart_id"
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 20170606023824) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer  "total",            default: 0
     t.integer  "user_id"
@@ -73,6 +82,15 @@ ActiveRecord::Schema.define(version: 20170606023824) do
     t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "post_scores", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "score"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_post_scores_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|

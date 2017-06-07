@@ -1,13 +1,19 @@
+<body>
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-        <div class="thumbnail  wow slideInLeft">
-            <img src="https://zero-to-three.s3.amazonaws.com/images/159/11cddd6d-0c16-4591-b071-823fbbe3e143-medium.jpg?1457115738" alt="Lights" style="width:100%">
-            <div class="caption">
-              <p>Babies can use their actions and sounds to let loved ones know what they want, like handing a book to a parent so that she’ll read it aloud. How does your 9- to 12-month-old baby “tell” you what he wants?</p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="thumbnail  wow slideInLeft">
+                <img src="https://zero-to-three.s3.amazonaws.com/images/159/11cddd6d-0c16-4591-b071-823fbbe3e143-medium.jpg?1457115738" alt="Lights" style="width:100%">
+                <div class="caption">
+                  <p>Babies can use their actions and sounds to let loved ones know what they want, like handing a book to a parent so that she’ll read it aloud. How does your 9- to 12-month-old baby “tell” you what he wants?</p>
+                </div>
             </div>
         </div>
+      </div>
     </div>
+
     <div class="col-md-4 text-center">
       <div class="panel panel-default">
           <div class="panel-body">
@@ -19,41 +25,120 @@
     </div>
   </div>
 </div>
+</body>
 
-<dic class="container">
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-       <%= form_for Post.new do |f| %>
-         <div class="form-group">
-           <%= f.text_area :content, :class => "form-control" %>
-         </div>
-         <div class="form-group">
-           <%= f.submit :class => "btn btn-primary" %>
-         </div>
-       <% end %>
-    </div>
-  <div>
-</div>
-<div class="container">
+<hr>
+<body>
+<div class="container" >
       <% @posts.each do |post| %>
+      <div class="containerone">
+        <div class="panel panel-default">
+        <div class="panel-body">
         <div class="row">
-           <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                  <div class="panel-heading"><%= post.user.display_name %></div>
-                  <div class="panel-body">
-                    <%= post.content %>
-                     <% if current_user && post.user == current_user %>
-                       <p class="text-right">
-                         <%= link_to "Delete", post_path(post), :method => :delete, :class => "btn btn-danger" %>
-                       </p>
-                     <% end %>
-                    </div>
-                  </div>
-            </div>
+          <div class="col-md-6">
+            <div class="text-left"><h5>评论者：<%= post.user.display_name %></h5></div>
           </div>
+          <div class="col-md-6">
+           <div class="text-right">
+            <span class="average-score"><%= post.average_score %></span>
+            <div class="raty" data-score="<%= post.find_score(current_user).try(:score) || 0 %>" data-score-url="<%= rate_post_path(post) %>"></div>
+           </div>
+          </div>
+        </div>
+        <div class="row">
+           <div class="col-md-12 ">
+             <div class="panel panel-default">
+                <div class="panel-body">
+                  <%= post.content %>
+                  <div class="text-right">
+                    <% if current_user && post.user == current_user %>
+                      <p class="text-right">
+                        <%= link_to "Delete", post_path(post), :method => :delete, :class => "btn btn-default" %>
+                      </p>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div clss="row">
+          <div class="col-md-6">
+             <div class="text-left"><span id="post-thumbsup-<%= post.id %>" class="label label-success"><%= post.likes.count %> 👍</div>
+          </div>
+          <div class="col-md-6">
+             <div class="text-right">
+                  <span id="post-like-<%= post.id %>">
+                      <%= render :partial => "like", :locals => { :post => post } %>
+                  </span>
+              </div>
+          </div>
+        </div>
+       </div>
+       </div>
+      </div>
       <% end %>
 </div>
+</body>
+
+<div class="container" style="margin-left: 55px;">
+  <div class="row">
+    <button type="button" class="btn-default">
+      <h3>
+       <a id="my-open-click">我要写评论</a>
+      </h3>
+    </button>
+ </div>
+</div>
+<div class="container" style="margin-left: 55px;">
+  <div class="row">
+    <div id="foo" >
+      <a id="my-hide-click">close</a>
+      <p>
+        <%= form_for Post.new do |f| %>
+          <div class="form-group">
+            <%= f.text_area :content, :class => "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit :class => "btn btn-primary" %>
+          </div>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  $("#foo").hide();
+
+  $("#my-open-click").click(function(){
+    $("#foo").show();
+  })
+
+  $("#my-hide-click").click(function(){
+    $("#foo").hide();
+  })
+</script>
 
 <script>
    autosize($('#post_content'));
  </script>
+
+ <script>
+    $(".raty").raty({
+     path: '/images/',
+     score: function() { return $(this).data('score'); },
+     click: function(score) {
+       var that = this;
+       $.ajax({
+         url: $(this).data("score-url"),
+         method: "POST",
+         data: { score: score },
+         dataType: "json",
+         success: function(data){
+           $(that).closest(".panel-body").find(".average-score").html( data["average_score"] );
+         }
+       })
+     }
+   });
+</script>

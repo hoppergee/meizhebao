@@ -20,6 +20,7 @@
 //= require bootstrap/transition
 //= require wow.min
 //= require autosize.min
+//= require jquery.raty
 //= require_tree .
 
 $(document).ready(function(){
