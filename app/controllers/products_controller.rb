@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
 		# @product.variants.build
 		@variants = @product.variants
 		@colors = @variants.map { |v| v.color}.uniq
-		@sizes = @variants.map { |v| v.size}.uniq
+		@sizes = @variants.map { |v| v.size}.uniq.sort_by{|i| i[0..-3].to_i }
 
 		@current_quantity = 0
 		@variants.each do |v|
@@ -42,7 +42,6 @@ class ProductsController < ApplicationController
 	end
 
 	def select_color
-		# binding.pry
 		@product = Product.find_by_friendly_id!(params[:id])
 		@variants = @product.variants
 		@color = params[:color]
@@ -90,10 +89,8 @@ class ProductsController < ApplicationController
 			end
 			@sizes = @variants.map{ |v| v.size }.uniq
 			@colors = @variants.map { |v| v.color}.uniq
-			# @colors = @variants.where(size: @size).map{ |v| v.color }.uniq
 		end
 
-		# binding.pry
 		if @has_many
 			render :json => { :message => "ok", 
 							:current_quantity => @current_quantity, 
@@ -115,11 +112,6 @@ class ProductsController < ApplicationController
 							origin_price: @origin_price,
 							current_price: @current_price}	
 		end
-
-	    # respond_to do |format|
-	    #   format.html  # 如果客户端要求 HTML，则回传 index.html.erb
-	    #   format.js    # 如果客户端要求 JavaScript，回传 index.js.erb
-	    # end
 	end
 
 	def add_to_cart

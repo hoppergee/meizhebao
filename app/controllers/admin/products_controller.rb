@@ -19,12 +19,10 @@ class Admin::ProductsController < ApplicationController
 		@photo = @product.photos.build
 		@variant = @product.variants.build
 		@variant.create_price
-		# binding.pry
 	end
 
 	def create
 		@product = Product.new(product_params)
-		# binding.pry
 
 		if @product.save!
 			if params[:photos] != nil
@@ -41,10 +39,6 @@ class Admin::ProductsController < ApplicationController
 	def edit
 		@product = Product.find_by_friendly_id!(params[:id])
 		@product.variants.build if @product.variants.empty?
-		@variants = @product.variants.empty? ? [@product.variants.build] : @product.variants
-		# @variants.each do |v|
-		# 	v.create_price unless v.price
-		# end
 	end
 
 	def update
@@ -78,8 +72,18 @@ class Admin::ProductsController < ApplicationController
 	private
 
 	def product_params
-		params.require(:product).permit(:title, :description, :price, :category_id, :friendly_id, 
-										:variants_attributes => [:id, :size, :color, :quantity, :_destroy, :price_attributes => [:id, :current, :origin]]
+		params.require(:product).permit(:title, 
+										:description, 
+										:price, 
+										:category_id, 
+										:friendly_id, 
+										:variants_attributes => [:id, 
+																:size, 
+																:color, 
+																:quantity, 
+																:_destroy, 
+																:price_attributes => [:id, :current, :origin]
+																]
 										)
 	end
 
