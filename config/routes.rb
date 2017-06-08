@@ -54,8 +54,13 @@ Rails.application.routes.draw do
 	resources :courses
 	resources :courseones
 	resources :courseoneslessonones
-	
-	resources :posts
+	resources :posts do
+		member do
+			post "like" => "posts#like"
+      post "unlike" => "posts#unlike"
+			post "rate" => "posts#rate"
+		end
+	end
 
 	resources :about
 	resource :user

@@ -21,6 +21,7 @@
 //= require wow.min
 //= require autosize.min
 //= require nested_form_fields
+//= require jquery.raty
 //= require_tree .
 
 
