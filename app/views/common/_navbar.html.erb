@@ -3,7 +3,7 @@
 	<div class="container-fluid">
 		<div class="col-md-5">
 			<div class="col-md-4">
-				<%= link_to(t("navbar.course"), courses_path) %>
+				<%= link_to(t("navbar.course"), courses_path(type: course_category)) %>
 			</div>
 			<div class="col-md-4">
 				<%= link_to(t("navbar.philosophy_notes"), '/welcome/fix') %>

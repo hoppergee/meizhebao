@@ -30,3 +30,10 @@
     default_username: "宝妈&宝爸"
   admin:
     panel: "后台管理"
+  errors:
+    messages:
+      carrierwave_processing_error: "图片剪裁失败"
+      carrierwave_integrity_error: "这不是一个图片，盆友"
+      carrierwave_download_error: "图片下载失败"
+      extension_whitelist_error: "你不能上传 %{extension} 这种格式的文件, 我们支持的格式有: %{allowed_types}"
+      extension_blacklist_error: "你不能上传 %{extension} 这种格式的文件, 以下这些格式都是被禁止的: %{prohibited_types}"
