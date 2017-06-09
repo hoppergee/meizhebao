@@ -50,10 +50,14 @@
             image: "图片"
             variant: "规格种类"
             variants:
+                legend: "规格"
                 quantity: "库存"
                 color: "颜色"
                 size: "尺寸"
                 price:
                     current: "现价"
                     origin: "原价"
+  activerecord:
+    models:
+      variant: "规格种类" 
 

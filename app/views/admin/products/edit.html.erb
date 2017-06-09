@@ -7,11 +7,11 @@
 	</div>
 
 	<div class="group">
-		<%= f.input :description, label: t("product.description") %>
+		<%= f.input :description %>
 	</div>
 	
 	<div class="group">
-		<%= f.input :price, label: t("product.home_page_price") %>
+		<%= f.input :price %>
 	</div>
 
 <!-- 	<div class="group">
@@ -43,7 +43,9 @@
   		<p>限小写英树枝及横线， 将作为网址的一部分</p>
   	</div>
 
-	<%= render 'variants_form' , f: f %>
+	<%# binding.pry %>
+
+	<%= render 'variants_form' , f: f  %>
 
 	<%= f.submit "Submit", data: {disable_with: "Submitting..."} %>
 

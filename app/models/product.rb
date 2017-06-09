@@ -11,6 +11,11 @@ class Product < ApplicationRecord
 
 	# mount_uploader :image, ImageUploader
 
+	# def variants_attributes=(attributes)
+	# 	self.variants << attributes.map {|item| binding.pry; Variant.find(item[:id]) if item.is_a? Hash }
+	# 	super
+	# end
+
 	def has_images?
 		!self.photos.empty? && head_image.present?
 	end

@@ -22,6 +22,7 @@ class Admin::ProductsController < ApplicationController
 	end
 
 	def create
+		binding.pry
 		@product = Product.new(product_params)
 
 		if @product.save!

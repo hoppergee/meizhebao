@@ -14,13 +14,18 @@
 		<%= f.input :price %>
 	</div>
 
-	<div class="gorup">
-		<%= f.input :category_id, collection: dress_category.leaves %>
+	<div class="group">
+		<%= f.input :category_id, collection: dress_category.children, label: t("product.gender"), input_html: { id: 'product_gender_id' }%>
+	</div>
+
+	<div class="group">
+		<%#= f.grouped_collection_select :category_id, Category.roots, :children, :name, :id, :name, include_blank: true  %>
+		<%= f.input :category_id, collection: dress_category.children, as: :grouped_select, group_method: :children, label: t("product.category")%>
 	</div>
 	
 	<div class="group">
 	    <%#= f.input :image, as: :file %>
-	    <%#= f.label :image %><br>
+	    <%#= f.label :image %>
 	    <%= f.file_field :image, :multiple => true, name: "photos[image][]" %>
   	</div>
 
@@ -30,7 +35,7 @@
   		<p>限小写英树枝及横线， 将作为网址的一部分</p>
   	</div>
 
-	<%= render 'variants_form' , f: f %>
+	<%= render 'variants_form' , :locales => { f: f } %>
 
 	<%= f.submit "Submit", data: { disable_with: "Submiting..." } %>
 
