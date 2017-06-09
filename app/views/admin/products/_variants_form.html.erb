@@ -1,4 +1,5 @@
     <%= f.nested_fields_for :variants do |ff| %>
+    <%#= f.fields_for :variants do |ff| %>
   		<filedset style="border-left: 5px solid #bbb; margin-bottom: 10px; padding: 10px;">
   			<legend><%#= Variant.model_name.human %><%#= f.object.variants.find_index(ff.object).to_i + 1 %></legend>
   			<div class="form-group">
@@ -29,7 +30,9 @@
 
   		</filedset>
   		<%= ff.remove_nested_fields_link "移除产品规格", :class => "btn btn-danger" %>
+      <%#= ff.link_to_remove "移除产品规格" %>
   	<% end %>
   	<p class="text-right">
   		<%= f.add_nested_fields_link :variants, "新增产品规格", :class => "btn btn-default" %>
+      <%#= f.link_to_add "新增产品规格", :variants %>
   	</p>

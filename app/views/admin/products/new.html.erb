@@ -35,7 +35,7 @@
   		<p>限小写英树枝及横线， 将作为网址的一部分</p>
   	</div>
 
-	<%= render 'variants_form' , :locales => { f: f } %>
+	<%= render :partial => 'variants_form' , :locals => { f: f } %>
 
 	<%= f.submit "Submit", data: { disable_with: "Submiting..." } %>
 
