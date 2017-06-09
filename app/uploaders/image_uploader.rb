@@ -33,9 +33,12 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_and_pad: [50, 66]
   end
 
-  version :medium_416_234 do
-    process resize_and_pat: [416, 234]
-  end 
+  version :course do
+    version :medium do
+      process resize_and_pad: [416, 234]
+    end 
+  end
+
 
 
 

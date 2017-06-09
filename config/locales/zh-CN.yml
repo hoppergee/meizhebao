@@ -18,6 +18,9 @@
     post_review: "撰写评论"
     new_season: "2017当季新品"
     discount_season: "2016清仓打折（-50% 买一送一）"
+    gender: "性别"
+    variant: "规格种类"
+    choose_category: "请选择品类"
   navbar:
     course: "课程"
     philosophy_notes: "哲思录"
@@ -37,3 +40,20 @@
       carrierwave_download_error: "图片下载失败"
       extension_whitelist_error: "你不能上传 %{extension} 这种格式的文件, 我们支持的格式有: %{allowed_types}"
       extension_blacklist_error: "你不能上传 %{extension} 这种格式的文件, 以下这些格式都是被禁止的: %{prohibited_types}"
+  simple_form:
+    labels:
+        product:
+            title: "标题"
+            description: "简介"
+            price: "首页价格"
+            category: "类别"
+            image: "图片"
+            variant: "规格种类"
+            variants:
+                quantity: "库存"
+                color: "颜色"
+                size: "尺寸"
+                price:
+                    current: "现价"
+                    origin: "原价"
+

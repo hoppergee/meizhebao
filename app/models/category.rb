@@ -3,6 +3,8 @@ class Category < ApplicationRecord
 
 	has_many :products
 
+	mount_uploader :image, ImageUploader
+
 	def current_dress_category
 		
 	end

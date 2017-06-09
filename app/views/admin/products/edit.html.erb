@@ -3,19 +3,28 @@
 <%= simple_form_for [:admin, @product] do |f| %>
 
 	<div class="group">
-		<%= f.input :title %>
+		<%= f.input :title%>
 	</div>
 
 	<div class="group">
-		<%= f.input :description %>
+		<%= f.input :description, label: t("product.description") %>
 	</div>
 	
 	<div class="group">
-		<%= f.input :price %>
+		<%= f.input :price, label: t("product.home_page_price") %>
 	</div>
 
-	<div class="gorup">
-		<%= f.input :category_id, collection: dress_category.leaves %>
+<!-- 	<div class="group">
+		<%#= f.input :category_id, collection: dress_category.leaves %>
+	</div> -->
+	
+	<div class="group">
+		<%= f.input :category_id, collection: dress_category.children, label: t("product.gender"), input_html: { id: 'product_gender_id' }%>
+	</div>
+
+	<div class="group">
+		<%#= f.grouped_collection_select :category_id, Category.roots, :children, :name, :id, :name, include_blank: true  %>
+		<%= f.input :category_id, collection: dress_category.children, as: :grouped_select, group_method: :children, label: t("product.category")%>
 	</div>
 
 	<% if @product.has_images? %>
@@ -24,7 +33,7 @@
 	<% end %>
 
 	<div class="group">
-		<%= f.label :image %>
+		<%= f.label t("product.image") %>
 		<%= f.file_field :image, :multiple => true, name: "photos[image][]" %>
 	</div>
 

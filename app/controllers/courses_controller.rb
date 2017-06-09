@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
 
 	def index
-		binding.pry
+		# binding.pry
 	end
 end
