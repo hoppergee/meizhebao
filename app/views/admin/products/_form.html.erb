@@ -1,0 +1,49 @@
+<%= simple_form_for [:admin, @product],html:{id:"admin-product-form-id"} do |f| %>
+
+	<div class="group">
+		<%= f.input :title %>
+	</div>
+
+	<div class="group">
+		<%= f.input :description %>
+	</div>
+
+	<div class="group">
+		<%= f.input :price %>
+	</div>
+
+	<div class="group">
+		<% if params["action"] == "edit" %>
+			<%= f.input :category_id, collection: dress_category.children, label: t("product.gender"), selected: @current_gender, input_html: { id: 'product_gender_id' }%>
+		<% else %>
+			<%= f.input :category_id, collection: dress_category.children, label: t("product.gender"), include_blank: true, selected: @current_gender, input_html: { id: 'product_gender_id' }%>
+		<% end %>
+	</div>
+
+	<div class="group">
+		<%#= f.grouped_collection_select :category_id, Category.roots, :children, :name, :id, :name, include_blank: true  %>
+		<%= f.input :category_id, collection: dress_category.children, as: :grouped_select, group_method: :children, label: t("product.category")%>
+	</div>
+	
+	<% if @product.has_images? %>
+		<span>目标商品图</span> <br>
+		<%= image_tag(@product.head_image.thumb.url) %>
+	<% end %>
+
+	<div class="group">
+	    <%#= f.input :image, as: :file %>
+	    <%#= f.label :image %>
+	    <%= f.file_field :image, :multiple => true, name: "photos[image][]" %>
+  	</div>
+
+  	<div class="group">
+  		<%= f.label :friendly_id %>
+  		<%= f.text_field :friendly_id, :required => true, :class => "form-control" %>
+  		<p>限小写英树枝及横线， 将作为网址的一部分</p>
+  	</div>
+
+	<%= render :partial => 'variants_form' , :locals => { f: f } %>
+
+	<%= f.submit "Submit", data: { disable_with: "Submiting..." } %>
+
+<% end %>

@@ -1,3 +1,18 @@
 // Place all the styles related to the admin::products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#admin-product-form-id #variant-fieldset-id {
+	border: 1px solid #bbb; 
+	margin-bottom: 10px; 
+	padding: 10px;
+}
+
+#variant-fieldset-id legend {
+	width: auto;
+	border: none;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+

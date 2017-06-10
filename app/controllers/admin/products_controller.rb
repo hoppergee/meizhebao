@@ -18,11 +18,10 @@ class Admin::ProductsController < ApplicationController
 		@product = Product.new
 		@photo = @product.photos.build
 		@variant = @product.variants.build
-		@variant.create_price
+		@variant.build_price
 	end
 
 	def create
-		binding.pry
 		@product = Product.new(product_params)
 
 		if @product.save!
@@ -40,6 +39,11 @@ class Admin::ProductsController < ApplicationController
 	def edit
 		@product = Product.find_by_friendly_id!(params[:id])
 		@product.variants.build if @product.variants.empty?
+		if @product.category.is_descendant_of?(Category.girl)
+			@current_gender = Category.girl
+		else
+			@current_gender = Category.boy
+		end
 	end
 
 	def update
