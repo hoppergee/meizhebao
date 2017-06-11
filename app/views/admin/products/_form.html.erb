@@ -33,7 +33,8 @@
 	<div class="group">
 	    <%#= f.input :image, as: :file %>
 	    <%#= f.label :image %>
-	    <%= f.file_field :image, :multiple => true, name: "photos[image][]" %>
+	    <%#= f.file_field :image, :multiple => true, name: "photos[image][]" %>
+	    <%= f.input :image, as: :file, :multiple => true, name: "photos[image][]" %>
   	</div>
 
   	<div class="group">
@@ -41,6 +42,8 @@
   		<%= f.text_field :friendly_id, :required => true, :class => "form-control" %>
   		<p>限小写英树枝及横线， 将作为网址的一部分</p>
   	</div>
+	
+	<br>
 
 	<%= render :partial => 'variants_form' , :locals => { f: f } %>
 
