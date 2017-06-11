@@ -1,0 +1,12 @@
+<table class="table table-bordered">
+	<thead>
+		<th>用户名</th>
+		<th>邮箱</th>
+	</thead>
+	<tbody>
+		<% Users.all.where(is_admin: false).each do |user| %>
+			<td><%= user.name %></td>
+			<td><%= user.email %></td>
+		<% end %>
+	</tbody>
+</table>
