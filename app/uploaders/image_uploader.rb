@@ -33,6 +33,13 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_and_pad: [50, 66]
   end
 
+  version :course do
+    version :medium do
+      process resize_and_pad: [416, 234]
+    end 
+  end
+
+
 
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

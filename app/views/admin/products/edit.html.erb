@@ -1,41 +1,4 @@
 <h2> Edit Product </h2>
 
-<%= simple_form_for [:admin, @product] do |f| %>
+<%= render :partial => "form", :locals => { product: @product } %>
 
-	<div class="group">
-		<%= f.input :title %>
-	</div>
-
-	<div class="group">
-		<%= f.input :description %>
-	</div>
-	
-	<div class="group">
-		<%= f.input :price %>
-	</div>
-
-	<div class="gorup">
-		<%= f.input :category_id, collection: dress_category.leaves %>
-	</div>
-
-	<% if @product.has_images? %>
-		<span>目标商品图</span> <br>
-		<%= image_tag(@product.head_image.thumb.url) %>
-	<% end %>
-
-	<div class="group">
-		<%= f.label :image %>
-		<%= f.file_field :image, :multiple => true, name: "photos[image][]" %>
-	</div>
-
-	 <div class="group">
-  		<%= f.label :friendly_id %>
-  		<%= f.text_field :friendly_id, :required => true, :class => "form-control" %>
-  		<p>限小写英树枝及横线， 将作为网址的一部分</p>
-  	</div>
-
-	<%= render 'variants_form' , f: f %>
-
-	<%= f.submit "Submit", data: {disable_with: "Submitting..."} %>
-
-<% end %>

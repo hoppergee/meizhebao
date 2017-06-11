@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170607002554) do
+ActiveRecord::Schema.define(version: 20170609091656) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "cart_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170607002554) do
     t.integer "rgt",                        null: false
     t.integer "depth",          default: 0, null: false
     t.integer "children_count", default: 0, null: false
+    t.string  "image"
     t.index ["lft"], name: "index_categories_on_lft"
     t.index ["parent_id"], name: "index_categories_on_parent_id"
     t.index ["rgt"], name: "index_categories_on_rgt"
