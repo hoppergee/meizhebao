@@ -40,6 +40,11 @@ class ApplicationController < ActionController::Base
   	return cart
   end
 
+
+  def find_cart1
+    
+  end
+
   protected
   def configure_permitted_parameters
     added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]
