@@ -22,11 +22,9 @@ class Admin::ProductsController < ApplicationController
 	end
 
 	def create
-		binding.pry
 		@product = Product.new(product_params)
 
 		if @product.save!
-			binding.pry
 			if params[:photos] != nil
 				params[:photos]['image'].each do |image|
 					@photo = @product.photos.create!(:image => image)
